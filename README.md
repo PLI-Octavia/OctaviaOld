@@ -9,6 +9,9 @@ First off, install Python 3.6+
 ```bash
 # OS X
 [ ven ~/git/octavia ] brew install python3
+...
+# create the virtual env
+[ ven ~/git/octavia ] python3 -m venv envoctavia
 ```
 
 Then you need to `cd` into this directory, and enable the virtual environment (`venv`):
@@ -53,6 +56,7 @@ Successfully installed django-1.11 pytz-2017.2
 # References
 
 https://tutorial.djangogirls.org/en/
+https://tutorial.djangogirls.org/en/django_installation/
 
 # TODO
 
