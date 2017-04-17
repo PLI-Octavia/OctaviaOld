@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Course(models.Model):
     anme = models.CharField(max_length=30)
 
@@ -10,3 +9,13 @@ class User(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     course_id = models.ForeignKey('Course')
+
+class Games(models.Model):
+    game_name = models.CharField(max_length=255)
+    game_version = models.CharField(max_length=30)
+    game_level = models.SmallIntergerField()
+    game_text = models.TextField()
+
+class GameCourses(models.Model):
+    course_id = models.ForeignKey('Course')
+    game_id = models.ForeignKey('Games')
