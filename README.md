@@ -32,6 +32,12 @@ Your prompt should show `(envoctavia)` before it:
 Python 3.6.1
 ```
 
+And let's install app:
+
+```bash
+(envoctavia) [ ven ~/git/octavia ] git clone https://github.com/PLI-Octavia/Octavia.git
+
+```
 Let's install `pip` (Python's package manager):
 
 ```bash
@@ -39,18 +45,9 @@ Let's install `pip` (Python's package manager):
 Requirement already up-to-date: pip in ./octavia/lib/python3.6/site-packages
 ```
 
-And let's install Django:
-
 ```bash
-(envoctavia) [ ven ~/git/octavia ] pip install django~=1.11.0
-Collecting django~=1.11.0
-  Downloading Django-1.11-py2.py3-none-any.whl (6.9MB)
-    100% |████████████████████████████████| 6.9MB 112kB/s 
-Collecting pytz (from django~=1.11.0)
-  Downloading pytz-2017.2-py2.py3-none-any.whl (484kB)
-    100% |████████████████████████████████| 491kB 1.8MB/s 
-Installing collected packages: pytz, django
-Successfully installed django-1.11 pytz-2017.2
+(envoctavia) [ ven ~/git/octavia ] pip install -r requirements.txt
+Will install all depedencies in requirements.txt
 ```
 
 # References
