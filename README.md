@@ -50,6 +50,32 @@ Requirement already up-to-date: pip in ./octavia/lib/python3.6/site-packages
 Will install all depedencies in requirements.txt
 ```
 
+Time to install postgre and import data:
+```bash
+(envoctavia) [ ven ~/git/octavia ] brew install postgresql
+```
+```bash
+(envoctavia) [ ven ~/git/octavia ] createuser -dtc 
+```
+
+To see if it works :
+```bash
+(envoctavia) [ ven ~/git/octavia ] psql --user octavia
+```
+
+```bash
+octavia#= /c octavia
+You are now connected to 'octavia' with user 'octavia'
+```
+
+If it is ok : 
+```bash
+(envoctavia) [ ven ~/git/octavia ] python manage.py migrate
+```
+
+You will see list of all table have been create.
+
+
 # References
 
 https://tutorial.djangogirls.org/en/
