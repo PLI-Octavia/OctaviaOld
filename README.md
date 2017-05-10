@@ -55,7 +55,8 @@ Time to install postgre and import data:
 (envoctavia) [ ven ~/git/octavia ] brew install postgresql
 ```
 ```bash
-(envoctavia) [ ven ~/git/octavia ] createuser -dtc 
+(envoctavia) [ ven ~/git/octavia ] createuser -drs octavia
+(envoctavia) [ ven ~/git/octavia ] createdb octavia -O octavia
 ```
 
 To see if it works :
@@ -64,7 +65,7 @@ To see if it works :
 ```
 
 ```bash
-octavia#= /c octavia
+octavia#= \c octavia
 You are now connected to 'octavia' with user 'octavia'
 ```
 
