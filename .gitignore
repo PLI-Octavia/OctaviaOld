@@ -1,4 +1,5 @@
 envoctavia
 octavia/__pycache__/
+app/__pycache__/
 .idea
 Octavia.iml
