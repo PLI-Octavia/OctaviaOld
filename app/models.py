@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 class Course(models.Model):
     name = models.CharField(max_length=30)
 
-class CustomUser(models.Model):
+class Profil(models.Model):
    user = models.OneToOneField(User)
    role = models.IntegerField()
-   
+
 class UserCourse(models.Model):
     teacher_id = models.ForeignKey(User)
     course_id = models.ForeignKey(Course)  
