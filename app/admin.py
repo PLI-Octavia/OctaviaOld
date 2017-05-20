@@ -5,8 +5,9 @@ from  .models import GameCourse
 from  .models import Score
 from  .models import Assignement
 from  .models import AssignementStudent
-from  .models import TeacherCourse
-from  .models import StudentCourse
+from  .models import CustomUser
+from  .models import UserCourse
+
 
 admin.site.register(Course)
 admin.site.register(Game)
@@ -14,7 +15,8 @@ admin.site.register(GameCourse)
 admin.site.register(Score)
 admin.site.register(Assignement)
 admin.site.register(AssignementStudent)
-admin.site.register(TeacherCourse)
-admin.site.register(StudentCourse)
+admin.site.register(CustomUser)
+admin.site.register(UserCourse)
+
 
 # Register your models here.

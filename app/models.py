@@ -4,13 +4,13 @@ from django.contrib.auth.models import User
 class Course(models.Model):
     name = models.CharField(max_length=30)
 
-class TeacherCourse(models.Model):
+class CustomUser(models.Model):
+   user = models.OneToOneField(User)
+   role = models.IntegerField()
+   
+class UserCourse(models.Model):
     teacher_id = models.ForeignKey(User)
-    course_id = models.ForeignKey(Course)
-
-class StudentCourse(models.Model):
-    student_id = models.ForeignKey(User)
-    course_id = models.ForeignKey(Course)   
+    course_id = models.ForeignKey(Course)  
 
 class Game(models.Model):
     name = models.CharField(max_length=255)
