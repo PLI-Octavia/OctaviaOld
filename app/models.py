@@ -1,27 +1,16 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Course(models.Model):
     name = models.CharField(max_length=30)
 
-
-class Student(models.Model):
-    login = models.CharField(max_length=30)
-    password = models.CharField(max_length=30)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    course_id = models.ForeignKey(Course, null=True)
-
-
-class Teacher(models.Model):
-    login = models.CharField(max_length=30)
-    password = models.CharField(max_length=30)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
+class TeacherCourse(models.Model):
+    teacher_id = models.ForeignKey(User)
     course_id = models.ForeignKey(Course)
-    salt = models.TextField(max_length=255)
-    email = models.TextField(max_length=255)
 
+class StudentCourse(models.Model):
+    student_id = models.ForeignKey(User)
+    course_id = models.ForeignKey(Course)   
 
 class Game(models.Model):
     name = models.CharField(max_length=255)
@@ -37,7 +26,7 @@ class GameCourse(models.Model):
 
 class Score(models.Model):
     game = models.ForeignKey(Game)
-    student = models.ForeignKey(Student)
+    student = models.ForeignKey(User)
     value = models.IntegerField(null=True)
     date = models.DateTimeField()
     start_time = models.TimeField()
@@ -54,7 +43,7 @@ class Assignement(models.Model):
 
 class AssignementStudent(models.Model):
     assignment = models.ForeignKey(Assignement)
-    user = models.ForeignKey(Student)
+    user = models.ForeignKey(User)
     score = models.ForeignKey(Score, null=True)
 
 
