@@ -1,0 +1,8 @@
+{% if not courses %}
+   <p>Pas de classe</p>
+{% else  %}
+	{% for course in courses %}
+		<p>{{course.name}}
+		<button value="Delete">Delete</button></p>
+	{% endfor %}
+{% endif %}
