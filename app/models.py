@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 
 class Course(models.Model):
     name = models.CharField(max_length=30)
-
+    members = models.ManyToManyField(User, through='UserCourse')
+    
 class Profil(models.Model):
    user = models.OneToOneField(User)
    role = models.IntegerField()
