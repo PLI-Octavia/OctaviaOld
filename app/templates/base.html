@@ -1,0 +1,21 @@
+{% load static %}
+<head><title>{% block title %}Octavia{% endblock %}</title></head>
+<body>
+<div class="page-header">
+    {% block header %}
+        Header here!
+    {% endblock %}
+</div>
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+<script src="{% static "prelude.min.js" %}"></script>
+<script src="{% static "modules.js" %}"></script>
+<script>
+octavia.require('{{ view_name }}');
+</script>
