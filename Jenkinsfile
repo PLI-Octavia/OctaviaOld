@@ -4,7 +4,6 @@ pipeline {
     stage('build') {
       steps {
         sh 'bin/install.sh && bin/build.sh'
-        archiveArtifacts 'build/*'
       }
     }
     stage('test') {
