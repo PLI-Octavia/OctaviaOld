@@ -3,18 +3,18 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh '\'bin/install.sh && bin/build.sh\''
+        sh 'bin/install.sh && bin/build.sh'
         archiveArtifacts 'build/*'
       }
     }
     stage('test') {
       steps {
-        sh '\'bin/test.sh\''
+        sh 'bin/test.sh'
       }
     }
     stage('deploy') {
       steps {
-        sh '\'bin/deploy.sh Production\''
+        sh 'bin/deploy.sh Production'
       }
     }
   }
