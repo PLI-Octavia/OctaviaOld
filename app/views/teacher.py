@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 import pprint
 
-TEMPLATES_PATH = '../templates/teacher/'
+TEMPLATES_PATH = 'teacher/'
 
 
 def see(request):

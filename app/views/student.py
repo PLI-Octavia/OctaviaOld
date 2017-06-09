@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 
-TEMPLATES_PATH = '../templates/student_auth/'
+TEMPLATES_PATH = 'student/'
 
 
 def login_form(request):
@@ -19,6 +19,7 @@ def auth(request):
     else:
         return HttpResponse('failed')
         # TODO error handling like teacher
+
 
 # TODO make this logged-in only
 def home(request):
