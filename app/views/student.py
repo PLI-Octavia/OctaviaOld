@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 
 TEMPLATES_PATH = 'student/'
+OCTAVIA_STUDENT_EMAIL = '@student.octavia.fr'
 
 
 def login_form(request):
@@ -11,7 +12,7 @@ def login_form(request):
 
 
 def auth(request):
-    user = authenticate(username=request.POST['email'] + '@student', password=request.POST['password'])
+    user = authenticate(username=request.POST['email'] + OCTAVIA_STUDENT_EMAIL, password=request.POST['password'])
 
     if user is not None:
         login(request, user)
