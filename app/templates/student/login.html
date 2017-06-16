@@ -17,26 +17,72 @@
 .shape-triangle:after {
     content: url(http://www.clker.com/cliparts/c/2/d/a/13140637441630548187yellow%20triangle-th.png);
 }
-    </style>
-    <form action="{% url "student_auth" %}" method="POST">
-        <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Nom</label>
-            <div class="col-sm-10">
-                <input class="form-control" id="input-email" placeholder="Nom" name="email">
-            </div>
+form{
+    width: 50%;
+    margin-left: 24%;
+    margin-right: auto;
+}
+.shape-selector{
+    margin-left: 30%;
+    margin-top: 6%;
+    margin-right: auto;
+    margin-bottom: auto;
+}
+.btn-co{
+    margin-left: 44%;
+    margin-right: auto;
+}
+.caption{
+    z-index: 10;
+    background-color: #92d36e;
+    margin-top: -4px;
+    margin-left: -4px;
+    margin-right: -4px;
+    margin-bottom: -19px;
+}
+.caption h2{
+    color: white;
+}
+.thumbnail{
+    background: #ffc581;
+}
+.btn-co button {
+    background-color: #92d36e !important;
+    border-color: #92d36e;
+    color: white;
+}
+.btn-co button:hover{
+    border-color: white;
+    color: white;
+}
+</style>
+        <div class="thumbnail">
+        <div class="caption">
+        <h2  classe="white" class="text-center">Connexion</h2>
+        
         </div>
-        <div class="form-group row">
-            <div class="shape-selector"></div>
-            <label for="inputPassword3" class="col-sm-2 col-form-label">Mot de passe</label>
-            <div class="col-sm-10">
-                <input type="password" class="form-control" id="input-password" placeholder="Password" name="password">
+        <hr>
+        <br>
+        <form action="{% url "student_auth" %}" method="POST">
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Nom</label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="input-email" placeholder="Nom" name="email">
+                </div>
             </div>
-            <div class="password-shapes"></div>
-        </div>
-        <div class="form-group row">
-            <div class="offset-sm-2 col-sm-10">
-                <button type="submit" class="btn btn-primary">Connexion</button>
+            <div class="form-group row">
+                <div class="shape-selector"></div>
+                <label for="inputPassword3" class="col-sm-3 col-form-label">Mot de passe</label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" id="input-password" placeholder="Password" name="password">
+                </div>
+                <div class="password-shapes"></div>
             </div>
+            <div class="form-group row">
+                <div class="btn-co">
+                    <button type="submit" class="btn btn-lg ">Connexion</button>
+                </div>
+            </div>
+        </form>
         </div>
-    </form>
 {% endblock %}

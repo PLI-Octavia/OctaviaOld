@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from app.models import Course, UserCourse
 from django.http import HttpResponse
 
 TEMPLATES_PATH = 'student/'
@@ -25,3 +26,10 @@ def auth(request):
 # TODO make this logged-in only
 def home(request):
     return render(request, TEMPLATES_PATH + 'home.html', {})
+
+def create(request):
+	myCourses = UserCourse.objects.filter(user=request.user)
+	return render(request, TEMPLATES_PATH + 'create.html', {'courses': myCourses})
+
+def store(request):
+	return render(request, TEMPLATES_PATH + 'login.html', {})

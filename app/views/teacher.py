@@ -29,3 +29,8 @@ def home(request):
 
 def logout(request):
     return render(request, TEMPLATES_PATH + 'auth.html', {})
+
+def store(request):
+    return render(request, TEMPLATES_PATH + 'auth.html', {})
+
+    
