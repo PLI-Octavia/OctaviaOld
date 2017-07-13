@@ -4,4 +4,7 @@ TEMPLATES_PATH = 'game/'
 
 
 def see(request):
-    return render(request, TEMPLATES_PATH + 'game.html', {})
+    # TODO: Dynamize
+    game = {"game_name": "Maths",
+            "game_path": "maths"}
+    return render(request, TEMPLATES_PATH + 'game.html', game)
