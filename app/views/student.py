@@ -5,7 +5,6 @@ from app.models import Course, UserCourse
 from django.http import HttpResponse
 
 TEMPLATES_PATH = 'student/'
-OCTAVIA_STUDENT_EMAIL = '@student.octavia.fr'
 
 
 def login_form(request):
@@ -13,7 +12,8 @@ def login_form(request):
 
 
 def auth(request):
-    user = authenticate(username=request.POST['email'] + OCTAVIA_STUDENT_EMAIL, password=request.POST['password'])
+    user = authenticate(username=request.POST['username'], password=request.POST['password'])
+    print(request.POST['username'], request.POST['password'])
 
     if user is not None:
         login(request, user)
@@ -32,4 +32,19 @@ def create(request):
 	return render(request, TEMPLATES_PATH + 'create.html', {'courses': myCourses})
 
 def store(request):
-	return render(request, TEMPLATES_PATH + 'login.html', {})
+    course = Course.objects.get(pk=request.POST['course'])
+    
+
+    user = User() 
+    user.username = request.POST['name']
+    user.set_password(request.POST['password'])
+    user.first_name = "toto"
+    user.last_name = "titi"
+    user.email = "toto@gmail.fr"
+    user.save()
+
+    userCourse = UserCourse()
+    userCourse.user = user
+    userCourse.course = course
+    userCourse.save()
+    return HttpResponse('success')

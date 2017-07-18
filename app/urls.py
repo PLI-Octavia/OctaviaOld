@@ -4,7 +4,7 @@ from .views import teacher, student, course
 student_urls = [
     url(r'^/?$', student.login_form, name='student_login'),
     url(r'^auth/?$', student.auth, name='student_auth'),
-    url(r'^home/?$', student.login, name='student_login'),
+    url(r'^home/?$', student.login, name='student_home'),
     url(r'^create/?$', student.create, name='student_create'),
     url(r'^store/?$', student.store, name='student_store'),
 ]
