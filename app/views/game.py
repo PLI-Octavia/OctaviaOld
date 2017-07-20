@@ -7,4 +7,4 @@ def see(request):
     # TODO: Dynamize
     game = {"game_name": "Maths",
             "game_path": "maths"}
-    return render(request, TEMPLATES_PATH + 'game.html', game)
+    return render(request, TEMPLATES_PATH + 'show.html', game)
