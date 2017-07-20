@@ -21,7 +21,7 @@ course_urls = [
 ]
 
 game_urls = [
-    url(r'^/?$', game.see, name='game'),
+    url(r'^(?P<game_id>\d+)/?$', game.see, name='game'),
 ]
 
 urlpatterns = [
