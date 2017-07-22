@@ -25,10 +25,10 @@
     compatibilitycheck: null,
     backgroundColor: "#222C36",
     splashStyle: "Light",
-    dataUrl: '{% static "games/"|add:game_name|add:"/Release/Maths.data" %}',
-    codeUrl: '{% static "games/"|add:game_name|add:"/Release/Maths.js" %}',
-    asmUrl: '{% static "games/"|add:game_name|add:"/Release/Maths.asm.js" %}',
-    memUrl: '{% static "games/"|add:game_name|add:"/Release/Maths.mem" %}',
+    dataUrl: '{% static "games/"|add:game_name|add:"/Release/"|add:game_name|add:".data" %}',
+    codeUrl: '{% static "games/"|add:game_name|add:"/Release/"|add:game_name|add:".js" %}',
+    asmUrl: '{% static "games/"|add:game_name|add:"/Release/"|add:game_name|add:".asm.js" %}',
+    memUrl: '{% static "games/"|add:game_name|add:"/Release/"|add:game_name|add:".mem" %}',
   };
 </script>
 <script src='{% static "games/"|add:game_name|add:"/Release/UnityLoader.js" %}'></script>
