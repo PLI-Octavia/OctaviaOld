@@ -1,33 +1,32 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
-<style>
-.caption h2{
-    color: black;
-}
-</style>
-<div class="thumbnail">
-  <div class="caption">
-    <h2  class="text-center">Connexion</h2>
-  </div>
-  <hr>
-  <div class="content">
-    <form action='/teacher/auth' method="POST">
-      <div class="form-group">
-        <label for="inputEmail3">Email</label>
-        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email">
+<section id="teacher-login-form">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Connexion</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form accept-charset="UTF-8" role="form" action='/teacher/auth' method="POST">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="inputEmail3">Email : </label>
+                                    <input id="inputEmail3" class="form-control" placeholder="Email" name="email" type="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3">Password : </label>
+                                    <input id="input-password" class="form-control" placeholder="Password" name="password" type="password" value="">
+                                </div>
+                                <input class="btn btn-lg btn-success btn-block" type="submit" value="Connexion">
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="inputPassword3">Mot de passe</label>
-        <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password">
-      </div>
-      <div class="form-group ">
-          <button type="submit" class="btn btn-primary">Connexion</button>
-      </div>
-    </form>
-  </div>
-</div>
-
+    </div>
+</section>
 {% endblock %}
