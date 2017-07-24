@@ -91,6 +91,11 @@ Go to profil take your teacher in the list and set role at 1.
 
 You can now connect with this teacher
 
+Finally to start the server :
+```bash
+python manage.py runserver
+```
+
 
 # References
 
