@@ -84,8 +84,11 @@ Create a teacher :
 localhost:port/admin 
 ```
 Connect with the superuser and you will see all of tables.
+
 Go to users and click "Add user" => Fill the form
+
 Go to profil take your teacher in the list and set role at 1.
+
 You can now connect with this teacher
 
 
