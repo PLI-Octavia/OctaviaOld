@@ -87,5 +87,3 @@ https://tutorial.djangogirls.org/en/django_installation/
 https://github.com/matannoam/pypugjs ?
 Frontend language?
 
-
-#Poney test
