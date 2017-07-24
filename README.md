@@ -73,8 +73,20 @@ If it is ok :
 ```bash
 (envoctavia) [ ven ~/git/octavia ] python manage.py migrate
 ```
+You now have to create a superuser : 
+```bash
+(envoctavia) [ ven ~/git/octavia ] python manage.py createsuperuser
+```
+set octaviasuperuser as login and ask for the pass
 
-You will see list of all table have been create.
+Create a teacher :
+```bash
+localhost:port/admin 
+```
+Connect with the superuser and you will see all of tables.
+Go to users and click "Add user" => Fill the form
+Go to profil take your teacher in the list and set role at 1.
+You can now connect with this teacher
 
 
 # References
