@@ -28,6 +28,11 @@ def store(request):
 	#Redirect to the see view
 	return redirect('courses')
 
+def edit(request, course_id):
+	users = UserCourse.objects.filter(course=course_id)
+	print(users)
+
+	return render(request, TEMPLATES_PATH + 'edit.html', {'users': users})
 
 def delete(request, course_id):
 	courseToHide = UserCourse.objects.get(pk=course_id)
@@ -35,4 +40,3 @@ def delete(request, course_id):
 	courseToHide.active = 0
 	courseToHide.save()
 	return redirect('courses')
-
