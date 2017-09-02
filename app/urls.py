@@ -21,6 +21,8 @@ course_urls = [
     url(r'^/?$', course.see, name='courses'),
     url(r'^create/?$', course.create, name='courses_create'),
     url(r'^store/?$', course.store, name='courses_store'),
+    url(r'^delete/(?P<course_id>\d+)/?$', course.delete, name='courses_delete'),
+
 ]
 
 game_urls = [

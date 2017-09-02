@@ -17,7 +17,7 @@ def auth(request):
     if user is not None:
         # login is a auth method to set user in session
         login(request, user)
-        return redirect('teacher_home')
+        return redirect('courses')
     else:
         return HttpResponse('failed')
     # TODO => redirect to auth view with bootstrap alert to say auth don t pass

@@ -11,7 +11,8 @@ class Profil(models.Model):
 
 class UserCourse(models.Model):
     user = models.ForeignKey(User)
-    course = models.ForeignKey(Course)  
+    course = models.ForeignKey(Course)
+    active = models.IntegerField(default=1)  
 
 class Game(models.Model):
     name = models.CharField(max_length=255)
