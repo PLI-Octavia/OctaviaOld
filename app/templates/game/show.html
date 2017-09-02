@@ -1,15 +1,17 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | YouAreASpy</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="TemplateData/UnityProgress.js"></script>  
-    <script src="Build/UnityLoader.js"></script>
+    <title>{{game_name}}</title>
+    <link rel="shortcut icon" href='{% static "games/"|add:game_name|add:"/TemplateData/favicon.ico" %}'>
+    <link rel="stylesheet" href='{% static "games/"|add:game_name|add:"/TemplateData/style.css" %}'>
+    <script src='{% static "games/"|add:game_name|add:"/TemplateData/UnityProgress.js" %}'></script>  
+    <script src='{% static "games/"|add:game_name|add:"/Build/UnityLoader.js" %}'></script>
     <script>
-      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/maths.json", {onProgress: UnityProgress});
+      var gameInstance = UnityLoader.instantiate("gameContainer", '{% static "games/"|add:game_name|add:"/Build/maths.json" %}', {onProgress: UnityProgress});
     </script>
   </head>
   <body>
@@ -18,7 +20,7 @@
       <div class="footer">
         <div class="webgl-logo"></div>
         <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
-        <div class="title">YouAreASpy</div>
+        <div class="title">{{game_name}}</div>
       </div>
     </div>
   </body>
