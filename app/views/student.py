@@ -34,7 +34,6 @@ def create(request):
 def store(request):
     course = Course.objects.get(pk=request.POST['course'])
     
-
     user = User() 
     user.username = request.POST['name']
     user.set_password(request.POST['password'])
@@ -47,4 +46,7 @@ def store(request):
     userCourse.user = user
     userCourse.course = course
     userCourse.save()
-    return HttpResponse('success')
+
+    return redirect('/course/'+str(course.id)+'/edit/')
+    # return render(request, '/course/1/edit/', {})
+    # return HttpResponse('success')
