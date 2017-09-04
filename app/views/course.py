@@ -6,7 +6,8 @@ from app.models import Course, UserCourse
 TEMPLATES_PATH  =  '../templates/courses/'
 
 def see(request):
-	myCourses = UserCourse.objects.filter(user=request.user)
+	myCourses = UserCourse.objects.filter(user=request.user, active=1)
+
 	return render(request, TEMPLATES_PATH + 'see.html', {'courses': myCourses})
 
 def create(request):
@@ -26,3 +27,12 @@ def store(request):
 
 	#Redirect to the see view
 	return redirect('courses')
+
+
+def delete(request, course_id):
+	courseToHide = UserCourse.objects.get(pk=course_id)
+	print(courseToHide)
+	courseToHide.active = 0
+	courseToHide.save()
+	return redirect('courses')
+
