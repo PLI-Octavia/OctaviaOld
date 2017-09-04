@@ -17,10 +17,12 @@ def store(request):
 	#Create a new Course
 	course = Course()
 	course.name = request.POST['name']
+	course.active = 1
 	course.save()
 
 	#A course belong to a user
 	userCourse = UserCourse()
+	userCourse.active = 1
 	userCourse.course = course
 	userCourse.user = request.user
 	userCourse.save()
@@ -31,7 +33,6 @@ def store(request):
 
 def delete(request, course_id):
 	courseToHide = UserCourse.objects.get(pk=course_id)
-	print(courseToHide)
 	courseToHide.active = 0
 	courseToHide.save()
 	return redirect('courses')
