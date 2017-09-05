@@ -41,8 +41,8 @@ def store(request):
     user = User() 
     user.username = request.POST['name']
     user.set_password(request.POST['password'])
-    user.first_name = "toto"
-    user.last_name = "titi"
+    user.first_name = request.POST['first_name']
+    user.last_name = request.POST['last_name']
     user.email = "toto@gmail.fr"
     user.save()
 

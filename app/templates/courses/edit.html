@@ -4,9 +4,6 @@
 
 <div class="row">
     <div class="col-sm-3">
-
-    <a href="/student/create/" class="btn btn-primary" role="button">Ajouter un élève</a>
-
         <nav id="spy">
             <ul class="sidebar-nav nav">
                 <li class="sidebar-brand">
@@ -22,6 +19,7 @@
                         <span class="fa fa-anchor solo">Librairie</span>
                     </a>
                 </li>
+
             </ul>
         </nav>
     </div>
@@ -30,21 +28,37 @@
         <table id="student_table" class="display">
             <thead>
                 <tr>
+                    <th>Login de l'enfant</th>
                     <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for user in users %}
+                {% if user.user.profil.role != 1 %}
                 <tr>
                     <td>
-                        {% if user.user.profil.role != 1 %}
-                        {{ user.user }}
-                        {% endif %}
+                        {{ user.user.username }}
                     </td>
+                    <td>
+                        {{ user.user.first_name }}
+                    </td>
+                    <td>
+                        {{ user.user.last_name }}
+                    </td>               
+                	 <td>
+                	 	<div class='pull-right'>
+                	 		<button class="btn btn-primary">Modifier</button>
+                	 		<button class="btn btn-danger">Supprimer</button>
+                	 	</div>
+                	 </td>
                 </tr>
+                {% endif %}
                 {% endfor %}
             </tbody>
         </table>
+        <a href="/student/create/" class="btn btn-primary" role="button">Ajouter un élève</a>
     </div>
 </div>
 
