@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section id="student-login-form">
+<!--<section id="student-login-form">
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -30,5 +30,46 @@
         </div>
     </div>
 </div>
+</section>-->
+<section id="student-login-form">    
+    <div class="panda">
+        <div class="ear"></div>
+        <div class="face">
+            <div class="eye-shade"></div>
+            <div class="eye-white">
+                <div class="eye-ball"></div>
+            </div>
+            <div class="eye-shade rgt"></div>
+            <div class="eye-white rgt">
+                <div class="eye-ball"></div>
+            </div>
+            <div class="nose"></div>
+            <div class="mouth"></div>
+        </div>
+        <div class="body"> </div>
+        <div class="foot">
+            <div class="finger"></div>
+        </div>
+        <div class="foot rgt">
+            <div class="finger"></div>
+        </div>
+    </div>
+        <form accept-charset="UTF-8" role="form" action="{% url "student_auth" %}" method="POST">
+        <div class="hand"></div>
+        <div class="hand rgt"></div>
+        <h1>Connecte toi</h1>
+        <div class="form-group">
+            <input id="input-username" required="required" class="form-control" name="username" type="text">
+            <label class="form-label">Écris ton prénom</label>
+        </div>
+        <div class="form-group">
+            <div class="shape-selector text-center"></div>
+            <input id="input-password" class="form-control" placeholder="Password" name="password" type="password" value="">
+            <div class="password-shapes"></div>
+            <label class="form-label">Ton mot de passe</label>
+            <p class="alert">Invalid Credentials..!!</p>
+            <input class="btn btn-lg btn-success btn-block" type="submit" value="Connexion">
+        </div>
+    </form>
 </section>
 {% endblock %}
