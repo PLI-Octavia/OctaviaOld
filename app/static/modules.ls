@@ -1,18 +1,20 @@
 export octavia =
-  modules: []
-  require: !->
-    [ctrl, action] = it / '_'
-    @modules[ctrl]?[action]?!
+  modules: {}
+  aliases: {}
+  require: ->
+    while @aliases[it] => it = that
+    @modules[it]!
 
-  register: ([ctrl, action], fn) !->
-    @modules{}[ctrl][action] = fn
+  register: (module, @modules[module]) !->
+
+  alias: (old, @aliases[old]) !->
 
 {map} = require 'prelude-ls'
 
 hide = -> it.style.visibility = 'hidden'
 el = (tag) -> document.create-element tag
 
-octavia.register <[student login]> !->
+octavia.register 'login-form' !->
   shapes = <[square circle triangle]> # cross
   selected-shapes = []
   {parent-node: password-container}:password-field = document.query-selector '#input-password'
@@ -41,3 +43,6 @@ octavia.register <[student login]> !->
       selected-shapes.push shape
       render-password!
     shape-selector.append-child shape-el
+
+octavia.alias 'student_login' 'login-form'
+octavia.alias 'student_create' 'login-form'
