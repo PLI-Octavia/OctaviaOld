@@ -3,29 +3,23 @@
 {% block content %}
 
 <div class="row">
-    <div class="col-sm-3">
-        <nav id="spy">
-            <ul class="sidebar-nav nav">
-                <li class="sidebar-brand">
-                    <a href="/course/{{course_id}}/param/"><span class="fa fa-home solo">Gestion de la classe</span></a>
-                </li>
-                <li>
-                    <a href="/student/create/" data-scroll>
-                        <span class="fa fa-anchor solo">Gestion des élèves</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#anch2" data-scroll>
+    <div class="row">
+        <div class="col-md-3">
+            <div id="sidebar" class="well sidebar-nav">
+                <h5><i class="glyphicon glyphicon-home"></i>
+                    <small><b>MANAGEMENT</b></small>
+                </h5>
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="/student/create/">Ajouter un élève</a></li>
+                    <li><a href="/course/{{course_id}}/param/"><span class="fa fa-home solo">Gestion de la classe</span></a></li>
+                    <li><a href="#anch2" data-scroll>
                         <span class="fa fa-anchor solo">Librairie</span>
-                    </a>
-                </li>
-
-            </ul>
-        </nav>
-    </div>
-
-    <div class="col-sm-9">
-        <table id="student_table" class="display">
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9">
+           <table id="student_table" class="display">
             <thead>
                 <tr>
                     <th>Login de l'enfant</th>
@@ -47,18 +41,19 @@
                     <td>
                         {{ user.user.last_name }}
                     </td>               
-                	 <td>
-                	 	<div class='pull-right'>
-                	 		<button class="btn btn-primary">Modifier</button>
-                	 		<button class="btn btn-danger">Supprimer</button>
-                	 	</div>
-                	 </td>
+                     <td>
+                        <div class='pull-right'>
+                            <button class="btn btn-primary">Modifier</button>
+                            <button class="btn btn-danger">Supprimer</button>
+                        </div>
+                     </td>
                 </tr>
                 {% endif %}
                 {% endfor %}
             </tbody>
         </table>
-        <a href="/student/create/" class="btn btn-primary" role="button">Ajouter un élève</a>
+        </div>
+
     </div>
 </div>
 
