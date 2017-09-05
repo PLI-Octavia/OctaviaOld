@@ -12,12 +12,16 @@ def login_form(request):
 
 
 def auth(request):
-    user = authenticate(username=request.POST['username'], password=request.POST['password'])
-    print(request.POST['username'], request.POST['password'])
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
 
     if user is not None:
         login(request, user)
-        return redirect('student_home')
+
+        # Next one who redirect to a nonexistent template gets to be ass fucked by the entire seven nation army.
+        # return redirect('student_home') <- fuck you
+        return HttpResponse('success')
     else:
         return HttpResponse('failed')
         # TODO error handling like teacher
