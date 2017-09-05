@@ -30,13 +30,21 @@ def store(request):
 
 def edit(request, course_id):
 	users = UserCourse.objects.filter(course=course_id)
-	print(users)
+	
+	return render(request, TEMPLATES_PATH + 'edit.html', {'users': users, 'course_id': course_id})
 
-	return render(request, TEMPLATES_PATH + 'edit.html', {'users': users})
+def param(request, course_id):
+	course = Course.objects.get(pk=course_id)
+	return render(request, TEMPLATES_PATH + 'param.html', {'course': course})
 
 def delete(request, course_id):
 	courseToHide = UserCourse.objects.get(pk=course_id)
-	print(courseToHide)
 	courseToHide.active = 0
 	courseToHide.save()
 	return redirect('courses')
+
+def update(request):
+	course = Course.objects.get(pk=request.POST['course_id'])
+	course.name = request.POST['name']
+	course.save()
+	return redirect('/course/'+str(request.POST['course_id'])+'/edit/')

@@ -21,6 +21,8 @@ course_urls = [
     url(r'^/?$', course.see, name='courses'),
     url(r'^create/?$', course.create, name='courses_create'),
     url(r'^store/?$', course.store, name='courses_store'),
+    url(r'^update/?$', course.update, name='courses_update'),
+    url(r'^(?P<course_id>\d+)/param/?$', course.param, name='courses_param'),
     url(r'^(?P<course_id>\d+)/edit/?$', course.edit, name='courses_edit'),
     url(r'^delete/(?P<course_id>\d+)/?$', course.delete, name='courses_delete'),
 ]
