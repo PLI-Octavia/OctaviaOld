@@ -10,7 +10,7 @@ set :stages, %w(Production)
 set :use_sudo, false
 
 namespace :deploy do
-  before :starting, :preparehosting
-  before :publishing, :install
-  before :finishing, :clean
+	before :starting, :preparehosting
+	before :publishing, :install
+	before :finishing, :clean
 end
