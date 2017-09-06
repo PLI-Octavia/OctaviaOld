@@ -13,6 +13,7 @@ def see(request):
 def create(request):
 	return render(request, TEMPLATES_PATH + 'create.html', {})
 
+
 def store(request):
 	#Create a new Course
 	course = Course()

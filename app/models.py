@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 class Course(models.Model):
     name = models.CharField(max_length=30)
     members = models.ManyToManyField(User, through='UserCourse')
+    games = models.ManyToManyField('Game', through='GameCourse')
     
 class Profil(models.Model):
    user = models.OneToOneField(User)

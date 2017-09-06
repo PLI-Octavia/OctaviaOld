@@ -27,6 +27,11 @@ course_urls = [
     url(r'^(?P<course_id>\d+)/param/?$', course.param, name='courses_param'),
     url(r'^(?P<course_id>\d+)/edit/?$', course.edit, name='courses_edit'),
     url(r'^delete/(?P<course_id>\d+)/?$', course.delete, name='courses_delete'),
+
+    # cross-reference URLs
+    url('^(?P<course_id>\d+)/game/?$', game.for_course, name='game_for_course'),
+    url('^(?P<course_id>\d+)/game/(?P<game_id>\d+)/enable/?$', game.enable_for_course, name='game_enable_for_course'),
+    url('^(?P<course_id>\d+)/game/(?P<game_id>\d+)/disable/?$', game.disable_for_course, name='game_enable_for_course'),
 ]
 
 game_urls = [
