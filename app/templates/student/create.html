@@ -3,11 +3,13 @@
 {% block content %}
 
 <div class="content">
+  <h2>Ajouter un élève</h2>
+  <br />
   <form action='/student/store' method="POST">
-  		<div class="form-group">
-    		<label for="inputName">Login</label>
-      	<input type="text" class="form-control" id="inputName" placeholder="Login" name="name">
-    	</div>
+      <div class="form-group">
+        <label for="inputName">Login</label>
+        <input type="text" class="form-control" id="inputName" placeholder="Login" name="name">
+      </div>
 
       <div class="form-group">
         <label for="first_name">Prénom</label>
@@ -19,25 +21,38 @@
         <input type="text" class="form-control" id="last_name" placeholder="Nom" name="last_name">
       </div>
 
-		  <div class="form-group">
-    		<label for="inputPass">Password : square circle triangle</label>
+      <div class="form-group">
+        <label for="inputPass">Password : square circle triangle</label>
         <div class="shape-selector text-center"></div>
         <input id="input-password" class="form-control" placeholder="Password" name="password" type="password" value="">
         <div class="password-shapes"></div>
-    	</div>
+      </div>
 
 
-    	<div class="form-group">
-    		<label for="sel1">Dans quel classe ?</label>
-    		<select name="course">
-    			{% for course in courses %}
-  				  <option value="{{course.course.id}}"> {{course.course.name}} </option>
-  				{% endfor %}
-    		</select>
-    	</div>
-    	<div class="form-group pull-right">
-    		<button type="submit" class="btn btn-primary">Valider</button>
-    	</div>
+      <div class="form-group">
+        <label for="sel1">Dans quelle classe ?</label>
+        <select name="course">
+          {% for course in courses %}
+            <option value="{{course.course.id}}"> {{course.course.name}} </option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group pull-right">
+        <button type="submit" class="btn btn-primary">Valider</button>
+      </div>
+  </form>
+</div>
+
+  <br /><br /><br />
+  <h2>Ajouter des élèves</h2>
+  <h6>Le format doit être respecté : Pseudo,Mot de passe,Prénom,Nom,Classe</h6>
+  <br />
+  <form enctype="multipart/form-data" action='/student/storeCSV' method="POST">
+    <div class="form-group">
+      <input name="students" type="file" accept=".csv"/>
+    </div>
+    <div class="form-group pull-right">
+      <button type="submit" class="btn btn-primary">Valider</button>
     </div>
   </form>
 

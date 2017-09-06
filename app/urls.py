@@ -8,6 +8,7 @@ student_urls = [
     url(r'^home/?$', student.login, name='student_home'),
     url(r'^create/?$', student.create, name='student_create'),
     url(r'^store/?$', student.store, name='student_store'),
+    url(r'^storeCSV/?$', student.storeCSV, name='student_storeCSV'),
 ]
 
 teacher_urls = [

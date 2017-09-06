@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from app.models import Course, UserCourse
 from django.http import HttpResponse
+import csv
+from io import StringIO
 
 TEMPLATES_PATH = 'student/'
 
@@ -19,7 +21,7 @@ def auth(request):
     if user is not None:
         login(request, user)
 
-        # Next one who redirect to a nonexistent template gets to be ass fucked by the entire seven nation army.
+        # Next one who redirect to a nonexistent template gets to be assfucked by the entire seven nation army.
         # return redirect('student_home') <- fuck you
         return HttpResponse('success')
     else:
@@ -38,7 +40,7 @@ def create(request):
 def store(request):
     course = Course.objects.get(pk=request.POST['course'])
     
-    user = User() 
+    user = User()
     user.username = request.POST['name']
     user.set_password(request.POST['password'])
     user.first_name = request.POST['first_name']
@@ -52,5 +54,25 @@ def store(request):
     userCourse.save()
 
     return redirect('/course/'+str(course.id)+'/edit/')
-    # return render(request, '/course/1/edit/', {})
-    # return HttpResponse('success')
+
+def storeCSV(request):
+    file = request.FILES['students']
+    csvf = StringIO(file.read().decode())
+    reader = csv.reader(csvf, delimiter=',')
+    user = User()
+
+    # I am not ashamed :D
+    for row in reader:
+        user.username = row[0]
+        user.set_password(row[1])
+        user.first_name = row[2]
+        user.last_name = row[3]
+        user.email = "toto@gmail.fr"
+        user.save()
+        course = Course.objects.get(pk=row[4])
+        userCourse = UserCourse()
+        userCourse.user = user
+        userCourse.course = course
+        userCourse.save()
+
+    return redirect('/course/')
