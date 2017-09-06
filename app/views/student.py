@@ -33,9 +33,9 @@ def auth(request):
 def home(request):
     return render(request, TEMPLATES_PATH + 'home.html', {})
 
-def create(request):
+def create(request, course_id):
 	myCourses = UserCourse.objects.filter(user=request.user)
-	return render(request, TEMPLATES_PATH + 'create.html', {'courses': myCourses})
+	return render(request, TEMPLATES_PATH + 'create.html', {'courses': myCourses, 'course_id': course_id})
 
 def store(request):
     course = Course.objects.get(pk=request.POST['course'])
@@ -59,17 +59,19 @@ def storeCSV(request):
     file = request.FILES['students']
     csvf = StringIO(file.read().decode())
     reader = csv.reader(csvf, delimiter=',')
-    user = User()
+    # user = User()
+    # course = Course.objects.get(pk=request.POST['course'])
 
     # I am not ashamed :D
     for row in reader:
+        user = User()
         user.username = row[0]
         user.set_password(row[1])
         user.first_name = row[2]
         user.last_name = row[3]
         user.email = "toto@gmail.fr"
         user.save()
-        course = Course.objects.get(pk=row[4])
+        course = Course.objects.get(pk=request.POST['course'])
         userCourse = UserCourse()
         userCourse.user = user
         userCourse.course = course

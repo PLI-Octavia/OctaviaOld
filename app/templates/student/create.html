@@ -28,15 +28,8 @@
         <div class="password-shapes"></div>
       </div>
 
+      <input type="hidden" name="course" value="{{course_id}}">
 
-      <div class="form-group">
-        <label for="sel1">Dans quelle classe ?</label>
-        <select name="course">
-          {% for course in courses %}
-            <option value="{{course.course.id}}"> {{course.course.name}} </option>
-          {% endfor %}
-        </select>
-      </div>
       <div class="form-group pull-right">
         <button type="submit" class="btn btn-primary">Valider</button>
       </div>
@@ -51,6 +44,7 @@
     <div class="form-group">
       <input name="students" type="file" accept=".csv"/>
     </div>
+    <input type="hidden" name="course" value="{{course_id}}">
     <div class="form-group pull-right">
       <button type="submit" class="btn btn-primary">Valider</button>
     </div>
