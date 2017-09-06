@@ -5,6 +5,9 @@
 {% if not courses %}
    <p>Pas de classe</p>
 {% else  %}
+	<div class='row'>
+		<a href="/course/create/"><button class='btn btn-primary pull-right'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Créer une classe  </button></a>
+	</div>
 	<div class="row">
 	{% for course in courses %}
 	  <div class="col-sm-3 col-md-3 col-lg-3">
