@@ -81,3 +81,14 @@ def storeCSV(request):
         userCourse.save()
 
     return redirect('/course/')
+
+
+def delete(request, user_id, course_id):
+    userToDelete = User.objects.get(pk=user_id)
+    userToDelete.delete()
+    return redirect('/course/'+str(course_id)+'/edit/')    
+
+
+
+
+
