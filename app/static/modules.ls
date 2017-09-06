@@ -3,7 +3,7 @@ export octavia =
   aliases: {}
   require: ->
     while @aliases[it] => it = that
-    @modules[it]!
+    @modules[it]?!
 
   register: (module, @modules[module]) !->
 

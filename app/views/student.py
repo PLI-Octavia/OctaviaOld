@@ -3,8 +3,9 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from app.models import Course, UserCourse
 from django.http import HttpResponse
-import csv
+from django.contrib.auth.decorators import login_required
 from io import StringIO
+import csv
 
 TEMPLATES_PATH = 'student/'
 
@@ -29,14 +30,16 @@ def auth(request):
         # TODO error handling like teacher
 
 
-# TODO make this logged-in only
+@login_required
 def home(request):
     return render(request, TEMPLATES_PATH + 'home.html', {})
 
+@login_required
 def create(request, course_id):
 	myCourses = UserCourse.objects.filter(user=request.user)
 	return render(request, TEMPLATES_PATH + 'create.html', {'courses': myCourses, 'course_id': course_id})
 
+@login_required
 def store(request):
     course = Course.objects.get(pk=request.POST['course'])
     
