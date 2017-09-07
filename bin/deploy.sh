@@ -11,3 +11,4 @@ then
 fi
 then
 	echo "Deploy to prod only on master"
+fi
