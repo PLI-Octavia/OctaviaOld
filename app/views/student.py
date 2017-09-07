@@ -56,6 +56,7 @@ def store(request):
 
     return redirect('/course/'+str(course.id)+'/edit/')
 
+@login_required
 def storeCSV(request):
     file = request.FILES['students']
     csvf = StringIO(file.read().decode())
@@ -80,11 +81,12 @@ def storeCSV(request):
 
     return redirect('/course/')
 
-
+@login_required
 def update(request, user_id, course_id):
     userToUpdate = User.objects.get(pk=user_id)
     return render(request, TEMPLATES_PATH + 'update.html', {'user': userToUpdate, 'course_id': course_id})
 
+@login_required
 def save(request):
     userToUpdate = User.objects.get(pk=request.POST['user_id'])
     userToUpdate.username = request.POST['name']
@@ -93,6 +95,7 @@ def save(request):
     userToUpdate.save()
     return redirect('/course/'+str(request.POST['course'])+'/edit/')   
 
+@login_required
 def delete(request, user_id, course_id):
     userToDelete = User.objects.get(pk=user_id)
     userToDelete.delete()

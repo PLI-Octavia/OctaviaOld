@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from app.models import Course, UserCourse
 
 TEMPLATES_PATH  =  '../templates/courses/'
@@ -13,7 +14,7 @@ def see(request):
 def create(request):
 	return render(request, TEMPLATES_PATH + 'create.html', {})
 
-
+@login_required
 def store(request):
 	#Create a new Course
 	course = Course()
@@ -29,21 +30,25 @@ def store(request):
 	#Redirect to the see view
 	return redirect('courses')
 
+@login_required
 def edit(request, course_id):
 	users = UserCourse.objects.filter(course=course_id)
 	
 	return render(request, TEMPLATES_PATH + 'edit.html', {'users': users, 'course_id': course_id})
 
+@login_required
 def param(request, course_id):
 	course = Course.objects.get(pk=course_id)
 	return render(request, TEMPLATES_PATH + 'param.html', {'course': course})
 
+@login_required
 def delete(request, course_id):
 	courseToHide = UserCourse.objects.get(pk=course_id)
 	courseToHide.active = 0
 	courseToHide.save()
 	return redirect('courses')
 
+@login_required
 def update(request):
 	course = Course.objects.get(pk=request.POST['course_id'])
 	course.name = request.POST['name']
