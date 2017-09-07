@@ -8,7 +8,6 @@ then
 	source envoctavia/bin/activate
 	python manage.py migrate
 	sudo /etc/mod_wsgi-express-80/apachectl stop && sudo /etc/mod_wsgi-express-80/apachectl start
-fi
-then
+else
 	echo "Deploy to prod only on master"
 fi
