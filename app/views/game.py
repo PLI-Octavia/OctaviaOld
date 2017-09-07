@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
-from app.models import Course, Game, GameCourse
+from django.core import serializers
 from django.contrib.auth.decorators import login_required
+import json
+from app.models import Course, Game, GameCourse, Score, User
 
 TEMPLATES_PATH = 'game/'
 
@@ -34,3 +36,15 @@ def disable_for_course(request, course_id, game_id):
     GameCourse.objects.filter(course_id=course_id, game_id=game_id).delete()
 
     return redirect('game_for_course', course_id=course_id)
+
+@login_required
+def stats(request, game_id):
+    scores = Score.objects.filter(game_id=game_id).select_related('student')
+    users = User.objects.all()
+    scores_json = serializers.serialize('json', scores)
+    users_json = serializers.serialize('json', users)
+    
+    return render(request, TEMPLATES_PATH + 'stats.html', {
+        'scores_json': scores_json,
+        'users_json': users_json,
+    })

@@ -38,7 +38,6 @@ class Score(models.Model):
     end_time = models.TimeField(null=True)
     game_data = models.TextField(null=True)
 
-
 class Assignement(models.Model):
     mandatory = models.BooleanField()
     date = models.DateTimeField()

@@ -46,3 +46,23 @@ octavia.register 'login-form' !->
 
 octavia.alias 'student_login' 'login-form'
 octavia.alias 'student_create' 'login-form'
+
+octavia.register 'game_scores' !->
+  users = {[..pk, ..fields] for js-data-users}
+  console.log users
+  scores = {}
+  for {fields: {student: student-id, value, date}} in js-data-scores
+    student = users[student-id]
+    scores[][student.username]push [new Date date .value-of!; value]
+  data = [{name: username, data: values} for username, values of scores]
+  console.log JSON.stringify data
+
+  Highcharts.chart 'stats' do
+    title:
+      text: 'Statistiques'
+    xAxis:
+      type: 'datetime'
+    yAxis:
+      title:
+        text: 'Score'
+    series: data

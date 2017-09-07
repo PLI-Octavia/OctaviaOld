@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<script>
+var jsDataScores = {{ scores_json|safe }};
+var jsDataUsers = {{ users_json|safe }};
+</script>
+
+<div id="stats"></div>
+
+{% endblock %}

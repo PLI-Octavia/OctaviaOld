@@ -73,4 +73,44 @@
   });
   octavia.alias('student_login', 'login-form');
   octavia.alias('student_create', 'login-form');
+  octavia.register('game_scores', function(){
+    var users, res$, i$, x$, ref$, len$, scores, ref1$, studentId, value, date, student, key$, data, username, values;
+    res$ = {};
+    for (i$ = 0, len$ = (ref$ = jsDataUsers).length; i$ < len$; ++i$) {
+      x$ = ref$[i$];
+      res$[x$.pk] = x$.fields;
+    }
+    users = res$;
+    console.log(users);
+    scores = {};
+    for (i$ = 0, len$ = (ref$ = jsDataScores).length; i$ < len$; ++i$) {
+      ref1$ = ref$[i$].fields, studentId = ref1$.student, value = ref1$.value, date = ref1$.date;
+      student = users[studentId];
+      (scores[key$ = student.username] || (scores[key$] = [])).push([new Date(date).valueOf(), value]);
+    }
+    res$ = [];
+    for (username in scores) {
+      values = scores[username];
+      res$.push({
+        name: username,
+        data: values
+      });
+    }
+    data = res$;
+    console.log(JSON.stringify(data));
+    Highcharts.chart('stats', {
+      title: {
+        text: 'Statistiques'
+      },
+      xAxis: {
+        type: 'datetime'
+      },
+      yAxis: {
+        title: {
+          text: 'Score'
+        }
+      },
+      series: data
+    });
+  });
 }).call(this);
