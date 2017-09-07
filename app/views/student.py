@@ -21,10 +21,8 @@ def auth(request):
 
     if user is not None:
         login(request, user)
-
-        # Next one who redirect to a nonexistent template gets to be assfucked by the entire seven nation army.
-        # return redirect('student_home') <- fuck you
-        return HttpResponse('success')
+        userCourse = UserCourse.objects.get(user_id=user.id)
+        return redirect('/course/'+str(userCourse.course_id)+'/game?student=1')
     else:
         return HttpResponse('failed')
         # TODO error handling like teacher

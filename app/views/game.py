@@ -15,8 +15,8 @@ def for_course(request, course_id):
     course = Course.objects.get(pk=course_id)
     course_games = course.games.all()
     games_with_flag = [(game, game in course_games) for game in games]
-
-    return render(request, TEMPLATES_PATH + 'for_course.html', {'games_with_flag': games_with_flag, 'course_id': course_id})
+    student = request.GET.get('student', 0)    
+    return render(request, TEMPLATES_PATH + 'for_course.html', {'games_with_flag': games_with_flag, 'course_id': course_id, 'student': student})
 
 def enable_for_course(request, course_id, game_id):
     course = Course.objects.get(pk=course_id)
