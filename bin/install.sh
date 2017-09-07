@@ -16,5 +16,5 @@ then
 	export BRANCH=${BRANCH_NAME}
 fi
 
-echo "${GIT_LOCAL_BRANCH}"
-echo "${BRANCH_NAME}"
+echo "local branch: ${GIT_LOCAL_BRANCH}"
+echo "branch name: ${BRANCH_NAME}"
