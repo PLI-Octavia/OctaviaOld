@@ -1,5 +1,5 @@
 from django.conf.urls import url, include
-from .views import teacher, student, course, game, home
+from .views import teacher, student, course, game, home, score
 
 
 student_urls = [
@@ -40,10 +40,15 @@ game_urls = [
     url(r'^(?P<game_id>\d+)/?$', game.see, name='game'),
 ]
 
+score_urls = [
+    url(r'^/(?P<user_id>\d+)/(?P<game_id>\d+)/?$', score.store, name='score_store'),
+]
+
 urlpatterns = [
     url(r'^/?$', home.see, name='home'),
     url(r'^teacher/', include(teacher_urls)),
     url(r'^student/', include(student_urls)),
     url(r'^course/', include(course_urls)),
     url(r'^game/', include(game_urls)),
+    url(r'^score/', include(score_urls)),
 ]
