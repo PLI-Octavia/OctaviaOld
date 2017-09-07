@@ -2,11 +2,16 @@
 
 {% block content %}
 <div class="content">
-  <form action='/course/store' method="POST">
+  <form action='/course/store' method="POST" enctype="multipart/form-data">
     <div class="form-group row">
       <label for="inputName" class="">Nom de la classe</label>
         <input type="text" class="form-control" id="inputName" placeholder="Nom de la classe" name="name">
       </div>
+      
+      <label for="id_image" class="">Image de la classe</label>
+        <input id="id_image" type="file" name="image">
+      </div>
+
     </div>
     <div class="form-group pull-right">
         <button type="submit" class="btn btn-primary">Valider</button>

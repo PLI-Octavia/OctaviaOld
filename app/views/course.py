@@ -17,8 +17,10 @@ def create(request):
 @login_required
 def store(request):
 	#Create a new Course
+
 	course = Course()
 	course.name = request.POST['name']
+	course.model_pic = request.FILES['image']
 	course.save()
 
 	#A course belong to a user
@@ -43,7 +45,7 @@ def param(request, course_id):
 
 @login_required
 def delete(request, course_id):
-	courseToHide = UserCourse.objects.get(pk=course_id)
+	courseToHide = UserCourse.objects.get(course_id=course_id)
 	courseToHide.active = 0
 	courseToHide.save()
 	return redirect('courses')

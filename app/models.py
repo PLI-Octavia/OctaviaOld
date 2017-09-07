@@ -5,6 +5,7 @@ class Course(models.Model):
     name = models.CharField(max_length=30)
     members = models.ManyToManyField(User, through='UserCourse')
     games = models.ManyToManyField('Game', through='GameCourse')
+    model_pic = models.ImageField(upload_to = 'static/pictures/', default = 'pic_folder/None/no-img.jpg')
     
 class Profil(models.Model):
    user = models.OneToOneField(User)

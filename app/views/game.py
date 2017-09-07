@@ -7,7 +7,6 @@ TEMPLATES_PATH = 'game/'
 @login_required
 def see(request, game_id):
     game = Game.objects.get(pk=game_id)
-
     # Game folder name in static/games must be the game name.
     return render(request, TEMPLATES_PATH + 'show.html', {"game_name": game.name})
 
@@ -32,5 +31,4 @@ def enable_for_course(request, course_id, game_id):
 @login_required
 def disable_for_course(request, course_id, game_id):
     GameCourse.objects.filter(course_id=course_id, game_id=game_id).delete()
-
     return redirect('game_for_course', course_id=course_id)
