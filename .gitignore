@@ -6,3 +6,5 @@ app/views/__pycache__/
 Octavia.iml
 __pycache__
 octavia/settings.py
+*.pyc
+.*.swp
