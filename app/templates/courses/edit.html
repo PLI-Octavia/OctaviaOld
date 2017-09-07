@@ -10,10 +10,10 @@
                     <small><b>MANAGEMENT</b></small>
                 </h5>
                 <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="/student/create/{{course_id}}">Ajouter un élève</a></li>
+                    <li><a href="/student/create/{{course_id}}">Ajouter un élève</a></li>
                     <li><a href="/course/{{course_id}}/param/"><span class="fa fa-home solo">Gestion de la classe</span></a></li>
-                    <li><a href="#anch2" data-scroll>
-                        <span class="fa fa-anchor solo">Librairie</span>
+                    <li><a href="/course/{{course_id}}/game">
+                        <span class="fa fa-anchor solo">Librairie des jeux</span>
                     </a></li>
                 </ul>
             </div>
@@ -43,7 +43,7 @@
                     </td>               
                      <td>
                         <div class='pull-right'>
-                            <button class="btn btn-primary">Modifier</button>
+                            <a href="/student/update/{{user.user.id}}/{{course_id}}"><button class="btn btn-primary">Modifier</button></a>
                             <a href="/student/delete/{{user.user.id}}/{{course_id}}"><button class="btn btn-danger">Supprimer</button></a>
                         </div>
                      </td>

@@ -8,7 +8,9 @@ student_urls = [
     url(r'^home/?$', student.login, name='student_home'),
     url(r'^create/(?P<course_id>\d+)?$', student.create, name='student_create'),
     url(r'^delete/(?P<user_id>\d+)/(?P<course_id>\d+)?$', student.delete, name='student_delete'),
+    url(r'^update/(?P<user_id>\d+)/(?P<course_id>\d+)?$', student.update, name='student_update'),
     url(r'^store/?$', student.store, name='student_store'),
+    url(r'^save/?$', student.save, name='student_save'),
     url(r'^storeCSV/?$', student.storeCSV, name='student_storeCSV'),
 ]
 

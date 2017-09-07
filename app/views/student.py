@@ -83,6 +83,18 @@ def storeCSV(request):
     return redirect('/course/')
 
 
+def update(request, user_id, course_id):
+    userToUpdate = User.objects.get(pk=user_id)
+    return render(request, TEMPLATES_PATH + 'update.html', {'user': userToUpdate, 'course_id': course_id})
+
+def save(request):
+    userToUpdate = User.objects.get(pk=request.POST['user_id'])
+    userToUpdate.username = request.POST['name']
+    userToUpdate.first_name = request.POST['first_name']
+    userToUpdate.last_name = request.POST['last_name']    
+    userToUpdate.save()
+    return redirect('/course/'+str(request.POST['course'])+'/edit/')   
+
 def delete(request, user_id, course_id):
     userToDelete = User.objects.get(pk=user_id)
     userToDelete.delete()
