@@ -1,3 +1,4 @@
 #!/bin/bash
 
-echo $0
+LOCALDIR=$(dirname "$0")
+cd "${LOCALDIR}"/.. || exit
