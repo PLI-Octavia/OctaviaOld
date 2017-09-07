@@ -15,3 +15,6 @@ if [ ! -z "${BRANCH_NAME}" ]
 then
 	export BRANCH=${BRANCH_NAME}
 fi
+
+echo "${GIT_LOCAL_BRANCH}"
+echo "${BRANCH_NAME}"

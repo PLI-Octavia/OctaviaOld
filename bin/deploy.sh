@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "${BRANCH}"
 if [ "${BRANCH}" == "master" ]
 then
 	ssh octavia@51.255.166.37
