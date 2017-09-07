@@ -18,6 +18,7 @@
                 {% if student == 0 %}
                   Activé &bull;
                   <a href="/course/{{course_id}}/game/{{game.id}}/disable" class="btn btn-danger" role="button">Désactiver</a>
+                  <a href="/game/{{game.id}}/" class="btn btn-primary" role="button">Tester</a>
                 {% else %}
                   <a href="/game/{{game.id}}/" class="btn btn-primary" role="button">Jouer</a>
                 {% endif %}
@@ -25,6 +26,7 @@
                 {% if student == 0 %}
                   Désactivé &bull;
                   <a href="/course/{{course_id}}/game/{{game.id}}/enable" class="btn btn-primary" role="button">Activer</a>
+                  <a href="/game/{{game.id}}/" class="btn btn-primary" role="button">Tester</a>
                 {% else %}
                   Ce jeux n'a pas encore été activé par votre professeur
                 {%endif%}
