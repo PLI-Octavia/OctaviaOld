@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime
+import datetime
 
 class Course(models.Model):
     name = models.CharField(max_length=30)
@@ -31,8 +33,8 @@ class Score(models.Model):
     game = models.ForeignKey(Game)
     student = models.ForeignKey(User)
     value = models.IntegerField(null=True)
-    date = models.DateTimeField()
-    start_time = models.TimeField()
+    date = models.DateTimeField(auto_now_add=True, blank=True)
+    start_time = models.TimeField(auto_now_add=True, blank=True)
     end_time = models.TimeField(null=True)
     game_data = models.TextField(null=True)
 

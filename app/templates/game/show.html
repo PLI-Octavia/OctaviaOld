@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>{{game_name}}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="shortcut icon" href='{% static "games/"|add:game_name|add:"/TemplateData/favicon.ico" %}'>
     <link rel="stylesheet" href='{% static "games/"|add:game_name|add:"/TemplateData/style.css" %}'>
     <script src='{% static "games/"|add:game_name|add:"/TemplateData/UnityProgress.js" %}'></script>  
@@ -25,3 +26,21 @@
     </div>
   </body>
 </html>
+
+
+<script type="text/javascript">
+var gameManagement = {
+
+ sendScore:function(score) {
+    $.ajax({
+      type: 'POST',
+      url: '/score/' + {{user.id}} + '/' + {{game_id}} + '/',
+      data: {'score': score},
+      success: function(msg) {
+        
+      }
+  })
+}
+}
+
+</script>

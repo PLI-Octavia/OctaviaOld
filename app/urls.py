@@ -41,7 +41,7 @@ game_urls = [
 ]
 
 score_urls = [
-    url(r'^/(?P<user_id>\d+)/(?P<game_id>\d+)/?$', score.store, name='score_store'),
+    url(r'^(?P<user_id>\d+)/(?P<game_id>\d+)/?$', score.store, name='score_store'),
 ]
 
 urlpatterns = [

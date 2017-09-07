@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from app.models import Course, UserCourse, Profil
+from app.models import Course, UserCourse, Profil,Game,Score
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from io import StringIO
@@ -21,7 +21,7 @@ def store(request, user_id, game_id):
 	newScore = Score()
 
 	newScore.game =  gamePlayed
-	newScore.user = userToAddScore.user
+	newScore.student = userToAddScore.user
 	newScore.value = request.POST['score']
 	newScore.save()
 

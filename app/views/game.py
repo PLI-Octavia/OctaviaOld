@@ -9,7 +9,7 @@ def see(request, game_id):
     game = Game.objects.get(pk=game_id)
 
     # Game folder name in static/games must be the game name.
-    return render(request, TEMPLATES_PATH + 'show.html', {"game_name": game.name})
+    return render(request, TEMPLATES_PATH + 'show.html', {"game_name": game.name, "user":request.user, 'game_id':game.id})
 
 @login_required
 def for_course(request, course_id):
