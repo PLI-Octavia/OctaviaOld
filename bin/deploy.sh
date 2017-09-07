@@ -1,7 +1,6 @@
 #!/bin/bash
 
-echo "${BRANCH}"
-if [ "${BRANCH}" == "master" ]
+if [ "${BRANCH_NAME}" == "master" ]
 then
 	ssh octavia@51.255.166.37
 	cd /webapps/octavia/
