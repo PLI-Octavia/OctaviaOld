@@ -14,17 +14,21 @@
 	      <div class="caption">
           <h3>{{ game.name }}</h3>
           <p>
-            {% if student == 0 %}
               {% if flag %}
-              Activé &bull;
-              <a href="/course/{{course_id}}/game/{{game.id}}/disable" class="btn btn-danger" role="button">Désactiver</a>
+                {% if student == 0 %}
+                  Activé &bull;
+                  <a href="/course/{{course_id}}/game/{{game.id}}/disable" class="btn btn-danger" role="button">Désactiver</a>
+                {% else %}
+                  <a href="/game/{{game.id}}/" class="btn btn-primary" role="button">Jouer</a>
+                {% endif %}
               {% else %}
-              Désactivé &bull;
-              <a href="/course/{{course_id}}/game/{{game.id}}/enable" class="btn btn-primary" role="button">Activer</a>
+                {% if student == 0 %}
+                  Désactivé &bull;
+                  <a href="/course/{{course_id}}/game/{{game.id}}/enable" class="btn btn-primary" role="button">Activer</a>
+                {% else %}
+                  Ce jeux n'a pas encore été activé par votre professeur
+                {%endif%}
               {% endif %}
-            {% else %}
-                <a href="/game/{{game.id}}/" class="btn btn-primary" role="button">Jouer</a>
-            {% endif %}
           </p>
         </div>
       </div>
