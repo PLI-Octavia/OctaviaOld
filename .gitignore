@@ -5,3 +5,4 @@ app/views/__pycache__/
 .idea
 Octavia.iml
 __pycache__
+octavia/settings.py
