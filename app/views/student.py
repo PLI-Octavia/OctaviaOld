@@ -61,6 +61,7 @@ def store(request):
 
     return redirect('/course/'+str(course.id)+'/edit/')
 
+#import student from a csv
 @login_required
 def storeCSV(request):
     file = request.FILES['students']

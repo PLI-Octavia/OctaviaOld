@@ -12,7 +12,7 @@ import csv
 
 TEMPLATES_PATH = 'score/'
 
-
+#Store stat from the game
 def store(request, user_id, game_id):
 	userToAddScore = UserCourse.objects.get(user_id=user_id)
 	gamePlayed = Game.objects.get(pk=game_id)

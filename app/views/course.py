@@ -41,6 +41,7 @@ def param(request, course_id):
 	course = Course.objects.get(pk=course_id)
 	return render(request, TEMPLATES_PATH + 'param.html', {'course': course})
 
+#Hide course
 @login_required
 def delete(request, course_id):
 	courseToHide = UserCourse.objects.get(pk=course_id)
@@ -48,6 +49,7 @@ def delete(request, course_id):
 	courseToHide.save()
 	return redirect('courses')
 
+#Update Course information
 @login_required
 def update(request):
 	course = Course.objects.get(pk=request.POST['course_id'])
