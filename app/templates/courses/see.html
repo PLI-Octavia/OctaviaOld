@@ -5,6 +5,7 @@
 {% if not courses %}
    <p>Pas de classe</p>
 {% else  %}
+
 	<div class='row'>
 		<a href="/course/create/"><button class='btn btn-primary pull-right'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Créer une classe  </button></a>
 	</div>
@@ -16,9 +17,9 @@
 	      <div class="caption">
 	        <h3>{{course.course.name}}</h3>
           <p>
-          <a href="/course/{{course.course.id}}/edit" class="btn btn-primary" role="button">Modifier</a>
+          <a style="" href="/course/{{course.course.id}}/edit" class="btn btn-primary" role="button">Modifier</a>
           <a style="float:right;" href="delete/{{course.id}}" class="btn btn-danger" role="button">Supprimer</a>
-          <a href="/course/{{course.course.id}}/game" class="btn btn-info" role="button">Jeux</a></p>
+          <a style="margin-top:5px;"href="/course/{{course.course.id}}/game" class="btn btn-success" role="button">Jeux</a></p>
 	      </div>
 	    </div>
 	  </div>
