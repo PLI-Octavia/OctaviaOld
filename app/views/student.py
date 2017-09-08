@@ -66,10 +66,8 @@ def storeCSV(request):
     file = request.FILES['students']
     csvf = StringIO(file.read().decode())
     reader = csv.reader(csvf, delimiter=',')
-    # user = User()
-    # course = Course.objects.get(pk=request.POST['course'])
-
-    # I am not ashamed :D
+    
+    #create one user
     for row in reader:
         user = User()
         user.username = row[0]
@@ -84,7 +82,7 @@ def storeCSV(request):
         userCourse.course = course
         userCourse.save()
 
-    return redirect('/course/')
+    return redirect('/course/'+str(request.POST['course'])+'/edit/')
 
 @login_required
 def update(request, user_id, course_id):
