@@ -15,7 +15,7 @@ student_urls = [
 ]
 
 teacher_urls = [
-    url(r'^/?$', teacher.see, name='teacher_login'),
+    url(r'^$', teacher.see, name='teacher_login'),
     url(r'^auth/?$', teacher.auth, name='teacher_auth'),
     url(r'^home/?$', teacher.home, name='teacher_home'),
     url(r'^logout/?$', teacher.home, name='teacher_logout')
@@ -38,7 +38,7 @@ course_urls = [
 
 game_urls = [
     url(r'^(?P<game_id>\d+)/?$', game.see, name='game'),
-    url(r'^(?P<game_id>\d+)/scores?$', game.stats, name='game_scores'),
+    url(r'^(?P<game_id>\d+)/scores/?$', game.stats, name='game_scores'),
 ]
 
 score_urls = [
