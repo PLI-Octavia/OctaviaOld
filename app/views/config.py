@@ -13,8 +13,12 @@ def see(request, game_id, course_id):
 	game = Game.objects.get(pk=game_id)
 	
 	models = game.config
+	if request.GET.get('validate') == 1 :
+		validate = 1
+	else :
+		validate = 0
 
-	return render(request, TEMPLATES_PATH + 'see.html', {'models': models, 'course_id': course_id, 'game_id':game_id})
+	return render(request, TEMPLATES_PATH + 'see.html', {'models': models, 'course_id': course_id, 'game_id':game_id, 'validate': validate})
 
 def store(request):
 	game = Game.objects.get(pk=request.POST['game_id'])
@@ -30,4 +34,4 @@ def store(request):
 		config.config = json.dumps({'value' : request.POST['conf']})
 		config.save()
 	
-	return redirect('/course/'+str(request.POST['game_id'])+'/'+str(request.POST['course_id']))
+	return redirect('/config/'+str(request.POST['game_id'])+'/'+str(request.POST['course_id'])+'?validate=1')
