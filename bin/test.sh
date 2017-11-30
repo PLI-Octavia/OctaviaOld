@@ -1,3 +1,5 @@
 #!/bin/bash
 
-echo $0
+cd /webapps/octavia || exit
+source envoctavia/bin/activate
+python manage.py test
