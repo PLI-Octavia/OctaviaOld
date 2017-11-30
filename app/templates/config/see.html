@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="content">
+
+  <h2>{{models.message}}</h2>
+  <form action="/config/store" method="POST">
+      <input type="hidden" name="game_id" value="{{game_id}}">
+      <input type="hidden" name="course_id" value="{{course_id}}">
+
+      <div class="form-group">
+        <label for="inputconf">Login</label>
+          <input type="text" class="form-control" id="inputconf" placeholder="Quel multiplication travailler ?" name="conf">
+          <small>Si plusieurs séparer par un ;</small>
+        </div>
+
+
+      <input class="btn btn-primary pull-right"type="submit">
+  </form>
+</div>
+{% endblock %}

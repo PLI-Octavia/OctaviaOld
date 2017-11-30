@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
+from django.contrib.postgres.fields import JSONField
 import datetime
 
 class Course(models.Model):
@@ -22,6 +23,7 @@ class Game(models.Model):
     version = models.CharField(max_length=30)
     level = models.SmallIntegerField()
     text = models.TextField()
+    config = JSONField(null=True)
 
 
 class GameCourse(models.Model):
@@ -50,4 +52,10 @@ class AssignementStudent(models.Model):
     user = models.ForeignKey(User)
     score = models.ForeignKey(Score, null=True)
 
-
+class GameConfig(models.Model):
+    game = models.ForeignKey(Game)
+    course = models.ForeignKey(Course)
+    config = JSONField();
+     
+    
+                

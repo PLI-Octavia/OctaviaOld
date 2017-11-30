@@ -47,6 +47,7 @@ score_urls = [
 
 config_urls = [
     url(r'^(?P<game_id>\d+)/(?P<course_id>\d+)/?$', config.see, name='config_see'),
+    url(r'^store/?$', config.store, name='config_store'),
 ]
 
 urlpatterns = [

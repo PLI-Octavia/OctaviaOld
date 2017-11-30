@@ -7,7 +7,7 @@ from  .models import Assignement
 from  .models import AssignementStudent
 from  .models import Profil
 from  .models import UserCourse
-
+from  .models import GameConfig
 
 admin.site.register(Course)
 admin.site.register(Game)
@@ -17,6 +17,7 @@ admin.site.register(Assignement)
 admin.site.register(AssignementStudent)
 admin.site.register(Profil)
 admin.site.register(UserCourse)
+admin.site.register(GameConfig)
 
 
 # Register your models here.
