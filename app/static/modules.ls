@@ -9,7 +9,11 @@ export octavia =
 
   alias: (old, @aliases[old]) !->
 
-{map} = require 'prelude-ls'
+{map, sort-by, average} = require 'prelude-ls'
+
+avg = ->
+  return 0 unless it
+  average it or 0
 
 hide = -> it.style.visibility = 'hidden'
 el = (tag) -> document.create-element tag
@@ -51,13 +55,18 @@ octavia.register 'game_scores' !->
   users = {[..pk, ..fields] for js-data-users}
   console.log users
   scores = {}
+  averages = []
   for {fields: {student: student-id, value, date}} in js-data-scores
     student = users[student-id]
     scores[][student.username]push [new Date date .value-of!; value]
-  data = [{name: username, data: values} for username, values of scores]
+  for username, values of scores
+    averages.push [username, avg map (.1), values]
+  data = [{name: username, data: sort-by (.0), values} for username, values of scores]
+  average_data = sort-by (.1), averages
   console.log JSON.stringify data
+  console.log JSON.stringify average_data
 
-  Highcharts.chart 'stats' do
+  Highcharts.chart 'stats_base' do
     title:
       text: 'Statistiques'
     xAxis:
@@ -66,3 +75,14 @@ octavia.register 'game_scores' !->
       title:
         text: 'Score'
     series: data
+  Highcharts.chart 'stats_avg' do
+    chart:
+      type: 'column'
+    title:
+      text: 'Moyennes'
+    xAxis:
+      type: 'category'
+    series:
+      * name: 'Moyennes'
+        data: average_data
+      ...
