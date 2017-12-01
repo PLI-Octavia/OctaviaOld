@@ -29,6 +29,8 @@
 
 
 <script type="text/javascript">
+
+alert({{nb}})
 var gameManagement = {
 
  sendScore:function(score) {
@@ -40,7 +42,13 @@ var gameManagement = {
         
       }
   })
-}
+  },
+
+  getConfig:function() {
+    return {{nb}}
+  }
+
+
 }
 
 </script>

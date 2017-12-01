@@ -2,16 +2,24 @@ from django.shortcuts import render, redirect
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
 import json
-from app.models import Course, Game, GameCourse, Score, User
+from app.models import Course, Game, GameCourse, Score, User, UserCourse, GameConfig
 
 TEMPLATES_PATH = 'game/'
 
 @login_required
 def see(request, game_id):
     game = Game.objects.get(pk=game_id)
+    uc = UserCourse.objects.get(user=request.user)
+    if GameConfig.objects.filter(course_id=uc.course.id, game_id=game.id) :
+        config = GameConfig.objects.filter(course_id=uc.course.id, game_id=game.id).get()
+        nb = json.loads(config.config)
+        nb = nb['value']
+    else :
+        nb = 'all'
 
+    
     # Game folder name in static/games must be the game name.
-    return render(request, TEMPLATES_PATH + 'show.html', {"game_name": game.name, "user":request.user, 'game_id':game.id})
+    return render(request, TEMPLATES_PATH + 'show.html', {"game_name": game.name, "user":request.user, 'game_id':game.id, 'nb':nb})
 
 #list all of the game avaible
 @login_required
@@ -20,7 +28,7 @@ def for_course(request, course_id):
     course = Course.objects.get(pk=course_id)
     course_games = course.games.all()
     games_with_flag = [(game, game in course_games) for game in games]
-    student = request.GET.get('student', 0)    
+    student = request.GET.get('student', 0)
     return render(request, TEMPLATES_PATH + 'for_course.html', {'games_with_flag': games_with_flag, 'course_id': course_id, 'student': student})
 
 #Activate game for course
