@@ -15,7 +15,7 @@ def see(request, game_id):
         nb = json.loads(config.config)
         nb = nb['value']
     else :
-        nb = 'all'
+        nb = -1
 
     
     # Game folder name in static/games must be the game name.
