@@ -1,3 +1,4 @@
 #!/bin/bash
 
-echo $0
+source envoctavia/bin/activate
+python manage.py test
