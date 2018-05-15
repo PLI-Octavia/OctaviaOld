@@ -9,21 +9,57 @@
       <input type="hidden" name="game_id" value="{{game_id}}">
       <input type="hidden" name="course_id" value="{{course_id}}">
 
-      <div class="form-group">
-        <label for="inputconf">Login</label>
-          <input type="text" class="form-control" id="inputconf" placeholder="Quel multiplication travailler ?" name="conf">
-          <small>Si plusieurs séparer par un ;</small>
-        </div>
+      <div id="settings-form">
+      </div>
 
+      <input type="hidden" id="inputconf" name="conf" />
 
       <input class="btn btn-primary pull-right"type="submit">
   </form>
-
-
-  {% if validate == 0 %}
-    <div class="alert alert-success" role="alert">
-      This is a success alert—check it out!
-    </div>
-  {% endif %}
 </div>
+<style>
+.wrapped-input {
+  display: inline-block;
+}
+.wrapped-input:not(:first-of-type) {
+  margin-left: 15px;
+}
+ul li:not(:first-of-type) label {
+  display: none;
+}
+</style>
+<script>
+var formConfig = {
+  opts: {class: "form-group"},
+  fields: {
+    "words": {
+      type: "list-nested",
+      legend: "Liste des mots",
+      tag: "ul", /* if you change this, also change css */
+      item: {
+        tag: "li",
+        class: "form-group"
+      },
+      removeText: "[-] ",
+      addText: "[+] ",
+      config: {
+        layout: {tag: "span", class: "wrapped-input"}, /* la classe est + haut */
+        fields: {
+          "mauvaismot": {"label": "Mauvais (ou identique)", class: "form-control"},
+          "bonmot": {"label": "Correction", class: "form-control"}
+        }
+      }
+    }
+  }
+};
+var currentConfig = {
+  "multiplication": "3x4"
+};
+</script>
+<!--
+
+      <div class="form-group">
+        <label for="inputconf">Login</label>
+          <input type="text" class="form-control" id="inputconf" placeholder="Quel multiplication travailler ?" name="conf">
+-->
 {% endblock %}

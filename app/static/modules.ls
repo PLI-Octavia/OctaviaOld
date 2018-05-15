@@ -15,74 +15,32 @@ avg = ->
   return 0 unless it
   average it or 0
 
+export gEBI = -> document.get-element-by-id it
 hide = -> it.style.visibility = 'hidden'
-el = (tag) -> document.create-element tag
+set-tag-attr = (el, k, v) -> switch
+| k in <[content text]>
+  el.inner-HTML = v
+| k is \class
+  el.class-list.add v
+| k is \classes
+  for v
+    el.class-list.add ..
+| _
+  el[k] = v
+# L :: TagName -> Attrs -> DOMElement
+# L :: Attrs+{tag: TagName} -> defaultTag: TagName -> DOMElement
+export L = (tag, attrs) ->
+  if typeof! tag is 'Object'
+    if tag.tag
+      # TODO LiveScript 1.6:
+      #{tag, ...attrs} = tag
+      # XXX temp fix:
+      attrs = tag
+      tag = tag.tag
+    else
+      # use attrs as defaulted-to tag
+      [tag, attrs] = [attrs, tag]
+  document.create-element tag
+    for k, v of attrs when v?
+      set-tag-attr .., k, v
 
-octavia.register 'login-form' !->
-  shapes = <[square circle triangle]> # cross
-  selected-shapes = []
-  {parent-node: password-container}:password-field = document.query-selector '#input-password'
-  password-shapes = document.query-selector '.password-shapes'
-  unselected-shape = (idx) ->
-    ->
-      selected-shapes.splice idx, 1
-      render-password!
-  render-password = ->
-    password-shapes.inner-HTML = ''
-    password-field.value = selected-shapes * ' '
-    for let password-shape, idx in selected-shapes
-      el 'span'
-        ..class-name = "shape shape-#password-shape"
-        ..onclick = unselected-shape idx
-        password-shapes.append-child ..
-
-  hide password-field
-
-  shape-selector = document.query-selector '.shape-selector'
-  for let shape in shapes
-    console.log shape
-    shape-el = el 'span'
-      ..class-name = "shape shape-#shape"
-    shape-el.onclick = !->
-      selected-shapes.push shape
-      render-password!
-    shape-selector.append-child shape-el
-
-octavia.alias 'student_login' 'login-form'
-octavia.alias 'student_create' 'login-form'
-
-octavia.register 'game_scores' !->
-  users = {[..pk, ..fields] for js-data-users}
-  console.log users
-  scores = {}
-  averages = []
-  for {fields: {student: student-id, value, date}} in js-data-scores
-    student = users[student-id]
-    scores[][student.username]push [new Date date .value-of!; value]
-  for username, values of scores
-    averages.push [username, avg map (.1), values]
-  data = [{name: username, data: sort-by (.0), values} for username, values of scores]
-  average_data = sort-by (.1), averages
-  console.log JSON.stringify data
-  console.log JSON.stringify average_data
-
-  Highcharts.chart 'stats_base' do
-    title:
-      text: 'Statistiques'
-    xAxis:
-      type: 'datetime'
-    yAxis:
-      title:
-        text: 'Score'
-    series: data
-  Highcharts.chart 'stats_avg' do
-    chart:
-      type: 'column'
-    title:
-      text: 'Moyennes'
-    xAxis:
-      type: 'category'
-    series:
-      * name: 'Moyennes'
-        data: average_data
-      ...
