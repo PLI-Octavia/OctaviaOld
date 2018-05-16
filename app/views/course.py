@@ -12,10 +12,8 @@ def see(request):
 
     return render(request, TEMPLATES_PATH + 'see.html', {'courses': myCourses})
 
-
 def create(request):
     return render(request, TEMPLATES_PATH + 'create.html', {})
-
 
 @login_required
 def store(request):
@@ -33,7 +31,6 @@ def store(request):
     # Redirect to the see view
     return redirect('courses')
 
-
 @login_required
 def edit(request, course_id):
     users = UserCourse.objects.filter(course=course_id)
@@ -45,7 +42,6 @@ def param(request, course_id):
     course = Course.objects.get(pk=course_id)
     return render(request, TEMPLATES_PATH + 'param.html', {'course': course})
 
-
 #Hide course
 @login_required
 def delete(request, course_id):
@@ -53,7 +49,6 @@ def delete(request, course_id):
     courseToHide.active = 0
     courseToHide.save()
     return redirect('courses')
-
 
 #Update Course information
 @login_required

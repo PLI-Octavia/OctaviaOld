@@ -23,7 +23,7 @@ class Game(models.Model):
     version = models.CharField(max_length=30)
     level = models.SmallIntegerField()
     text = models.TextField()
-    config = JSONField(null=True)
+    config = JSONField(null=True, blank=True)
 
 
 class GameCourse(models.Model):
