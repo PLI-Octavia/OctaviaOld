@@ -4,7 +4,7 @@
 
 <div class="content">
 
-  <h2>{{models.message}}</h2>
+  <h2>Config</h2>
   <form action="/config/store" method="POST">
       <input type="hidden" name="game_id" value="{{game_id}}">
       <input type="hidden" name="course_id" value="{{course_id}}">
@@ -29,13 +29,15 @@ ul li:not(:first-of-type) label {
 }
 </style>
 <script>
+var formConfig = {{metadata|safe}};
+//*
 var formConfig = {
   opts: {class: "form-group"},
   fields: {
     "words": {
       type: "list-nested",
       legend: "Liste des mots",
-      tag: "ul", /* if you change this, also change css */
+      tag: "ul", // if you change this, also change css
       item: {
         tag: "li",
         class: "form-group"
@@ -43,7 +45,7 @@ var formConfig = {
       removeText: "[-] ",
       addText: "[+] ",
       config: {
-        layout: {tag: "span", class: "wrapped-input"}, /* la classe est + haut */
+        layout: {tag: "span", class: "wrapped-input"}, // la classe est + haut
         fields: {
           "mauvaismot": {"label": "Mauvais (ou identique)", class: "form-control"},
           "bonmot": {"label": "Correction", class: "form-control"}
@@ -52,8 +54,7 @@ var formConfig = {
     }
   }
 };
-var currentConfig = {
-  "multiplication": "3x4"
-};
+//*/
+var currentConfig = {{config|safe}};
 </script>
 {% endblock %}

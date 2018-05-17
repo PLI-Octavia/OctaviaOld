@@ -25,11 +25,9 @@ class Game(models.Model):
     text = models.TextField()
     config = JSONField(null=True, blank=True)
 
-
 class GameCourse(models.Model):
     course = models.ForeignKey(Course)
     game = models.ForeignKey(Game)
-
 
 class Score(models.Model):
     game = models.ForeignKey(Game)
@@ -46,7 +44,6 @@ class Assignement(models.Model):
     course = models.ForeignKey(Course)
     game = models.ForeignKey(Game)
 
-
 class AssignementStudent(models.Model):
     assignment = models.ForeignKey(Assignement)
     user = models.ForeignKey(User)
@@ -55,7 +52,4 @@ class AssignementStudent(models.Model):
 class GameConfig(models.Model):
     game = models.ForeignKey(Game)
     course = models.ForeignKey(Course)
-    config = JSONField();
-     
-    
-                
+    config = JSONField(null=True, blank=True)

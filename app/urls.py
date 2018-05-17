@@ -37,6 +37,7 @@ course_urls = [
 ]
 
 game_urls = [
+    url(r'^upload/?$', game.upload, name='game_upload'),
     url(r'^(?P<game_id>\d+)/?$', game.see, name='game'),
     url(r'^(?P<game_id>\d+)/scores/?$', game.stats, name='game_scores'),
 ]
