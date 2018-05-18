@@ -60,7 +60,7 @@ def stats(request, game_id):
         'users_json': users_json,
     })
 
-import tempfile
+from tempfile import NamedTemporaryFile
 from os.path import isfile
 from django.contrib.staticfiles.templatetags.staticfiles import static 
 from shutil import rmtree
@@ -68,11 +68,11 @@ from pathlib import Path
 def uploadGameZip(name, zipFile):
     # TODO check if zipfile.ZipFile needs an actual file
     #      or if we can just use request.FILES directly
-    with tempfile.NamedTemporaryFile(suffix = '.zip') as tempfile:
-        with open(tempfile, 'wb+') as dest:
+    with NamedTemporaryFile(suffix = '.zip') as tmp:
+        with open(tmp, 'wb+') as dest:
             for chunk in zipFile.chunks():
                 dest.write(chunk)
-        with zipfile.ZipFile(tempfile, 'r') as zf:
+        with zipfile.ZipFile(tmp, 'r') as zf:
             game_path = STATIC_URL + name
             try:
                 zf.extractall(game_path)
