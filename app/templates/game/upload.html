@@ -4,6 +4,10 @@
 
 <div class="content">
 
+	{% if error %}
+	<h3 class="error">Une erreur est survenue, le fichier est incorrect.</h3>
+	{% endif %}
+
 	<form action='{% url 'game_upload' %}' enctype="multipart/form-data" method="post">
     <div class="form-group row">
 			<label for="name">Fichier game .zip</label>

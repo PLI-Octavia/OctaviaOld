@@ -86,6 +86,8 @@ def uploadGameZip(name, zipFile):
                 rmtree(game_path, ignore_errors=True)
 
 
+from django.shortcuts import redirect
+
 @login_required
 def upload(request):
     if request.method == 'POST':
@@ -94,8 +96,15 @@ def upload(request):
         game.version = 1 # TODO parse from zip
         game.level = 1
         game.text = "Default text LOL"
-        # TODO check zip
-        game.config = uploadGameZip(game.name, request.FILES['gamefile'])
+
+        # TODO check if it's a zip etc
+        metadata = uploadGameZip(game.name, request.FILES['gamefile'])
+        if metadata is Nothing:
+            return render(request, TEMPLATES_PATH + 'upload.html', {'error': True})
+        else:
+            game.config = metadata
+            game.save()
+            return redirect('/')
     else:
         return render(request, TEMPLATES_PATH + 'upload.html')
     
