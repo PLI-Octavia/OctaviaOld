@@ -69,10 +69,10 @@ def uploadGameZip(name, zipFile):
     # TODO check if zipfile.ZipFile needs an actual file
     #      or if we can just use request.FILES directly
     with NamedTemporaryFile(suffix = '.zip') as tmp:
-        with open(tmp, 'wb+') as dest:
+        with open(tmp.name, 'wb+') as dest:
             for chunk in zipFile.chunks():
                 dest.write(chunk)
-        with zipfile.ZipFile(tmp, 'r') as zf:
+        with zipfile.ZipFile(tmp.name, 'r') as zf:
             game_path = STATIC_URL + name
             try:
                 zf.extractall(game_path)
