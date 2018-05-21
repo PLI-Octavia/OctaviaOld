@@ -73,7 +73,7 @@ def uploadGameZip(name, zipFile):
             for chunk in zipFile.chunks():
                 dest.write(chunk)
         with zipfile.ZipFile(tmp.name, 'r') as zf:
-            game_path = STATIC_URL + name
+            game_path = 'static/' + name
             try:
                 zf.extractall(game_path)
                 configFile = Path(game_path + '/config.json')
@@ -99,12 +99,12 @@ def upload(request):
 
         # TODO check if it's a zip etc
         metadata = uploadGameZip(game.name, request.FILES['gamefile'])
-        if metadata is Nothing:
+        if metadata is None:
             return render(request, TEMPLATES_PATH + 'upload.html', {'error': True})
         else:
             game.config = metadata
             game.save()
-            return redirect('/')
+            return redirect('/course')
     else:
         return render(request, TEMPLATES_PATH + 'upload.html')
     

@@ -32,31 +32,7 @@ ul li:not(:first-of-type) label {
 </style>
 <script>
 var formConfig = {{metadata|safe}};
-/*
-var formConfig = {
-  opts: {class: "form-group"},
-  fields: {
-    "words": {
-      type: "list-nested",
-      legend: "Liste des mots",
-      tag: "ul", // if you change this, also change css
-      item: {
-        tag: "li",
-        class: "form-group"
-      },
-      removeText: "[-] ",
-      addText: "[+] ",
-      config: {
-        layout: {tag: "span", class: "wrapped-input"}, // la classe est + haut
-        fields: {
-          "mauvaismot": {"label": "Mauvais (ou identique)", class: "form-control"},
-          "bonmot": {"label": "Correction", class: "form-control"}
-        }
-      }
-    }
-  }
-};
-//*/
+
 var currentConfig = {{config|safe}};
 </script>
 {% endblock %}
