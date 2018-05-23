@@ -73,7 +73,7 @@ def uploadGameZip(name, zipFile):
             for chunk in zipFile.chunks():
                 dest.write(chunk)
         with zipfile.ZipFile(tmp.name, 'r') as zf:
-            game_path = 'static/' + name
+            game_path = 'app/static/games/' + name
             try:
                 zf.extractall(game_path)
                 configFile = Path(game_path + '/config.json')
@@ -95,7 +95,7 @@ def upload(request):
         game.name = request.POST.get("name", "default")
         game.version = 1 # TODO parse from zip
         game.level = 1
-        game.text = "Default text LOL"
+        game.text = "Games"
 
         # TODO check if it's a zip etc
         metadata = uploadGameZip(game.name, request.FILES['gamefile'])
@@ -104,7 +104,7 @@ def upload(request):
         else:
             game.config = metadata
             game.save()
-            return redirect('/course')
+            return redirect('/course/')
     else:
         return render(request, TEMPLATES_PATH + 'upload.html')
     

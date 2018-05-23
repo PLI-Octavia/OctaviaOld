@@ -12,7 +12,7 @@
     <script src='{% static "games/"|add:game_name|add:"/TemplateData/UnityProgress.js" %}'></script>  
     <script src='{% static "games/"|add:game_name|add:"/Build/UnityLoader.js" %}'></script>
     <script>
-      var gameInstance = UnityLoader.instantiate("gameContainer", '{% static "games/"|add:game_name|add:"/Build/maths.json" %}', {onProgress: UnityProgress});
+      var gameInstance = UnityLoader.instantiate("gameContainer", '{% static "games/"|add:game_name|add:"/Build/"|add:game_name|add:".json" %}', {onProgress: UnityProgress});
     </script>
   </head>
   <body>
@@ -33,7 +33,7 @@
 var gameManagement = {
 
  sendScore:function(score) {
-    $.ajax({
+      $.ajax({
       type: 'POST',
       url: '/score/' + {{user.id}} + '/' + {{game_id}} + '/',
       data: {'score': score},
