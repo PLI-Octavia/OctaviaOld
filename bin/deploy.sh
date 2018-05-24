@@ -8,7 +8,7 @@ then
 	sudo git pull
 	source envoctavia/bin/activate
 	python manage.py migrate
-	yes | python manage.py collectstatic
+	python manage.py collectstatic --noinput --clear
 	sudo service gunicorn restart
 else
 	echo "Deploy to prod only on master"
