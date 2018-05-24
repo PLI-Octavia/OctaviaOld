@@ -7,16 +7,11 @@ then
 	cd /home/octavia/current
 	su octavia
 	sudo git pull
-	echo "### git pulled"
 	source envoctavia/bin/activate
-	echo "### activated"
 	python manage.py migrate
-	echo "### managed migrated"
-	python manage.py collectstatic --noinput ## --clear
-	echo "### managed collectstaticted"
+	python manage.py collectstatic --noinput --clear
 	exit
 	sudo service gunicorn restart
-	"### restarted"
 else
 	echo "Deploy to prod only on master"
 fi
