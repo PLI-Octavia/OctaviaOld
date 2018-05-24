@@ -5,14 +5,16 @@ then
 	# ssh octavia@51.255.166.37 "cd /webapps/octavia/ && sudo git pull && source envoctavia/bin/activate && python manage.py migrate && sudo /etc/mod_wsgi-express-80/apachectl stop && sudo /etc/mod_wsgi-express-80/apachectl start"
 	
 	cd /home/octavia/current
+	su octavia
 	sudo git pull
 	echo "### git pulled"
 	source envoctavia/bin/activate
 	echo "### activated"
 	python manage.py migrate
 	echo "### managed migrated"
-	python manage.py collectstatic --noinput --clear
+	python manage.py collectstatic --noinput ## --clear
 	echo "### managed collectstaticted"
+	exit
 	sudo service gunicorn restart
 	"### restarted"
 else
