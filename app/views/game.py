@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
+from django.core.management import call_command
 import json
 import zipfile
 from app.models import Course, Game, GameCourse, Score, User, UserCourse, GameConfig
@@ -104,6 +105,7 @@ def upload(request):
         else:
             game.config = metadata
             game.save()
+            call_command('collectstatic', verbosity=0, interactive=False)
             return redirect('/course/')
     else:
         return render(request, TEMPLATES_PATH + 'upload.html')
