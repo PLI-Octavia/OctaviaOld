@@ -9,7 +9,7 @@ then
 	sudo git pull
 	source envoctavia/bin/activate
 	python manage.py migrate
-	python manage.py collectstatic --noinput --clear
+	python manage.py collectstatic --noinput ## --clear
 	exit
 	sudo service gunicorn restart
 else
