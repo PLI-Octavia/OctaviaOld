@@ -12,6 +12,16 @@ then
 	python manage.py collectstatic --noinput ## --clear
 	exit
 	sudo service gunicorn restart
+elif [ "${BRANCH_NAME}" == "develop" ]
+then
+	cd /home/octaviadev/current
+	su octaviadev
+	sudo git pull
+	source envoctavia/bin/activate
+	python manage.py migrate
+	python manage.py collectstatic --noinput ## --clear
+	exit
+	sudo service gunicorn-dev restart
 else
 	echo "Deploy to prod only on master"
 fi
