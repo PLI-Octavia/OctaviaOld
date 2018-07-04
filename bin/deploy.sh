@@ -18,11 +18,8 @@ then
 	su octaviadev
 	sudo git pull origin develop
 	source envoctavia/bin/activate
-	echo "Before migrate"
-	python manage.py migrate
-	echo "After migrate"
+	## python manage.py migrate
 	python manage.py collectstatic --noinput ## --clear
-	echo "after manage"
 	exit
 	sudo service gunicorn-dev restart
 else
