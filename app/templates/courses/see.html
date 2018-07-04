@@ -17,13 +17,9 @@
 	                <img src="https://s-media-cache-ak0.pinimg.com/originals/3c/38/6d/3c386d203759319b508d9140440fb1c3.jpg" alt="..."/>
 	            </div>
 	            <div class="content">
-	                <div class="author">
-	                     <a href="#">
-
-	                      <h4 class="title">{{course.course.name}}<br />
+	              
+	                <h4 class="title">{{course.course.name}}<br />
 	                      </h4>
-	                    </a>
-	                </div>
 	                <p class="description text-center"> ici description ?<br>
 	                                    Je suis une description <br>
 	                                    de qualité"
@@ -31,9 +27,9 @@
 	            </div>
 	            <hr>
 	            <div class="text-center">
-	                <button href="/course/{{course.course.id}}/edit" class="btn btn-default">Modifier</button>
-	                <button href="delete/{{course.id}}" class="btn btn-default">Supprimer</button>
-	                <button href="/course/{{course.course.id}}/game" class="btn btn-default">Jeux</button>
+	                <a href="/course/{{course.course.id}}/edit" class="btn btn-default">Modifier</a>
+	                <a href="delete/{{course.id}}" class="btn btn-default">Supprimer</a>
+	                <a href="/course/{{course.course.id}}/game" class="btn btn-default">Jeux</a>
 
 	            </div>
 	        </div>
