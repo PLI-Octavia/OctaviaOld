@@ -15,11 +15,10 @@ then
 elif [ "${BRANCH_NAME}" == "develop" ]
 then
 	cd /home/octaviadev/current
-	su octaviadev
-	git pull
-	source envoctavia/bin/activate
+	sudo -u octaviadev git pull
+	sudo -u octaviadev source envoctavia/bin/activate
 	## python manage.py migrate
-	python manage.py collectstatic --noinput ## --clear
+	sudo -u octaviadev python manage.py collectstatic --noinput ## --clear
 	exit
 	sudo service gunicorn-dev restart
 else
