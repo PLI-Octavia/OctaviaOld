@@ -70,7 +70,13 @@
                 <li class="active">
                     <a href="/course/">
                         <i class="pe-7s-graph"></i>
-                        <p>Course</p>
+                        <p>Classe</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/course/create/">
+                        <i class="pe-7s-graph"></i>
+                        <p>Créer une classe</p>
                     </a>
                 </li>
                 {% elif request.user.profil.role == 0 %}
@@ -86,7 +92,7 @@
     </div>
     {% endif %}
     {% endblock %}
-    
+
     <div class="main-panel">
         <div class="content">
             <div class="container-fluid">
