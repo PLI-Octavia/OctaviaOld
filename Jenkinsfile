@@ -13,7 +13,7 @@ pipeline {
     }
     stage('deploy') {
       steps {
-        sh 'bin/deploy.sh Production'
+        sh 'bin/deploy.sh Preproduction'
       }
     }
   }
