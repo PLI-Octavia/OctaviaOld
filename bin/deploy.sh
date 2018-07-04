@@ -16,7 +16,7 @@ elif [ "${BRANCH_NAME}" == "develop" ]
 then
 	cd /home/octaviadev/current
 	su octaviadev
-	sudo git pull
+	sudo git pull origin develop
 	source envoctavia/bin/activate
 	python manage.py migrate
 	python manage.py collectstatic --noinput ## --clear
