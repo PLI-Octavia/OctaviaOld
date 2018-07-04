@@ -19,15 +19,18 @@
     <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
     <!-- custom CSS -->
     <link rel="stylesheet" href='{% static "css/normalize.css" %}'>
+    <link rel="stylesheet" href='{% static "css/light-bootstrap-dashboard.css"%}'>
+    <link rel="stylesheet" href='{% static "css/animate.min.css%}'>
+    <link rel="stylesheet" href='{% static "css/pe-icon-7-stroke.css%}'>
     <link rel="stylesheet" href='{% static "css/styles.css" %}'>
     <link rel="stylesheet" href='{% static "css/student_login.css" %}'>
 
     
 </head>
 <body>
-<div class="page-header">
+<div class="wrapper">
     {% block header %}
-    <header>
+<!--     <header>
         <div class="container clearfix">
             <div class="navbar-wrapper">
                 <div class="container">
@@ -51,9 +54,75 @@
                 </div>
             </div>
         </div>
-    </header>
+    </header> -->
+    <div class="sidebar" data-color="purple" >
+
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="/home/" class="simple-text">
+                    Octavia
+                </a>
+            </div>
+
+            <ul class="nav">
+                {% if request.user.profil.role == 1 %}
+                <li class="active">
+                    <a href="dashboard.html">
+                        <i class="pe-7s-graph"></i>
+                        <p>Course</p>
+                    </a>
+                </li>
+                {% elif request.user.profil.role == 0 %}
+                <li>
+                    <a href="user.html">
+                        <i class="pe-7s-user"></i>
+                        <p>TEST</p>
+                    </a>
+                </li>
+                 {% else %}
+                <li>
+                    <a href="table.html">
+                        <i class="pe-7s-note2"></i>
+                        <p>Table List</p>
+                    </a>
+                </li>
+                {% endif %}
+                <li>
+                    <a href="typography.html">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Typography</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="icons.html">
+                        <i class="pe-7s-science"></i>
+                        <p>Icons</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="maps.html">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="notifications.html">
+                        <i class="pe-7s-bell"></i>
+                        <p>Notifications</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
     {% endblock %}
-</div>
+
 <div class="content container">
     <div class="row">
         <div class="col-md-12">
@@ -61,6 +130,8 @@
             {% endblock %}
         </div>
     </div>
+</div>
+
 </div>
 <script src="{% static "prelude.min.js" %}"></script>
 <script src="{% static "modules.js" %}"></script>
