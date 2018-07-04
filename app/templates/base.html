@@ -86,15 +86,17 @@
     </div>
     {% endif %}
     {% endblock %}
- 
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            {% block content %}
-            {% endblock %}
+    
+    <div class="main-panel">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
 </div>
 <script src="{% static "prelude.min.js" %}"></script>
