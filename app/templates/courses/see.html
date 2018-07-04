@@ -12,10 +12,10 @@
 	{% for course in courses %}
 	  	<div class="col-md-4">
 	        <div class="card card-user">
-	            <div class="image">
+	            <div class="image" style="height: auto;">
 	                <img src="https://s-media-cache-ak0.pinimg.com/originals/3c/38/6d/3c386d203759319b508d9140440fb1c3.jpg" alt="..."/>
 	            </div>
-	            <div class="content">
+	            <div class="content" style="min-height: auto;">
 	              
 	                <h4 class="title text-center">{{course.course.name}}<br />
 	                      </h4>
@@ -26,7 +26,7 @@
 	                </p>
 	            </div>
 	            <hr>
-	            <div class="text-center">
+	            <div class="text-center" style="padding: 15px;">
 	                <a href="/course/{{course.course.id}}/edit" class="btn btn-default">Modifier</a>
 	                <a href="delete/{{course.id}}" class="btn btn-default">Supprimer</a>
 	                <a href="/course/{{course.course.id}}/game" class="btn btn-default">Jeux</a>
