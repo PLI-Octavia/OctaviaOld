@@ -14,8 +14,6 @@ then
 	sudo service gunicorn restart
 elif [ "${BRANCH_NAME}" == "develop" ]
 then
-	echo "import pty; pty.spawn('/bin/bash')" > /tmp/asdf.py
-	python /tmp/asdf.py
 	cd /home/octaviadev/current
 	su octaviadev
 	git pull
