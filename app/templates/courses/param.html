@@ -1,17 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<div class="content">
-  		<form action='/course/update' method="POST">
-    		<div class="form-group row">
-      			<label for="inputName" class="">Changer le nom de la classe</label>
-        		<input type="text" class="form-control" id="inputName" value="{{course.name}}" name="name">
-      		</div>
-    		</div>
-    		<input type="hidden" name="course_id" value="{{course.id}}">
-    		<div class="form-group pull-right">
-        		<button type="submit" class="btn btn-primary">Valider</button>
-    		</div>
-  		</form>
-	</div>
+  <div class="col-md-12">
+    <div class="card">
+        <div class="header">
+            <h4 class="title">Changer le nom de la classe</h4>
+        </div>
+        <div class="content">
+            <form action='/course/update' method="POST">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Nom de la classe</label>
+                            <input type="text" class="form-control" placeholder="name" value="{{course.name}}">
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="course_id" value="{{course.id}}">
+                <button type="submit" class="btn btn-info btn-fill pull-right">Valider</button>
+                <div class="clearfix"></div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
