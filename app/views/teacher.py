@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout as django_logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+
 import pprint
 
 TEMPLATES_PATH = 'teacher/'
@@ -28,7 +29,11 @@ def home(request):
 
 
 def logout(request):
-    return render(request, TEMPLATES_PATH + 'auth.html', {})
+    if 'course_id' in request.session:
+        del request.session['course_id']
+        del request.session['course_name']
+    django_logout(request)
+    return redirect('home')
 
 def store(request):
     return render(request, TEMPLATES_PATH + 'auth.html', {})

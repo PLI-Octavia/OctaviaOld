@@ -18,7 +18,7 @@ teacher_urls = [
     url(r'^$', teacher.see, name='teacher_login'),
     url(r'^auth/?$', teacher.auth, name='teacher_auth'),
     url(r'^home/?$', teacher.home, name='teacher_home'),
-    url(r'^logout/?$', teacher.home, name='teacher_logout')
+    url(r'^logout/?$', teacher.logout, name='teacher_logout')
 ]
 
 course_urls = [
