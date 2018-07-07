@@ -24,8 +24,10 @@ def see(request, game_id):
 #list all of the game avaible
 @login_required
 def for_course(request, course_id):
+    request.session['course_id'] = course_id
     games = Game.objects.all()
     course = Course.objects.get(pk=course_id)
+    request.session['course_name'] = course.name 
     course_games = course.games.all()
     games_with_flag = [(game, game in course_games) for game in games]
     student = request.GET.get('student', 0)

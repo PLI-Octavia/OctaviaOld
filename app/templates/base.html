@@ -61,7 +61,7 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="/" class="simple-text">
-                    Octavia
+                    Octavia 
                 </a>
             </div>
 
@@ -87,6 +87,29 @@
                     </a>
                 </li>
                 {% endif %}
+                {% if request.session.course_id %}
+                    <li>
+                        <p>vous travaillez sur : {{ request.session.course_name }}</p>
+                    </li>
+                    <li>
+                        <a href="/student/create/{{ request.session.course_id }}">
+                            <i class="pe-7s-graph"></i>
+                            <p>Ajouter un élève</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/course/{{request.session.course_id}}/param/">
+                            <i class="pe-7s-graph"></i>
+                                <p>Gestion de la classe</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/course/{{request.session.course_id}}/game">
+                            <i class="pe-7s-graph"></i>
+                                <p>Librairie des jeux</p>
+                            </a>
+                        </li>
+                {% endif%}
             </ul>
         </div>
     </div>
