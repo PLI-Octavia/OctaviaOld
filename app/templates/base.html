@@ -89,7 +89,7 @@
                 {% endif %}
                 {% if request.session.course_id %}
                     <div class="logo">
-                        <a class="simple-text">vous travaillez sur : {{ request.session.course_name }}</a>
+                        <a class="simple-text" style="font-size: 12px;">vous travaillez sur : {{ request.session.course_name }}</a>
                     </div>
                     <li>
                         <a href="/student/create/{{ request.session.course_id }}">
