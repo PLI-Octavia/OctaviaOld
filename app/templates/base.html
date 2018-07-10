@@ -87,7 +87,7 @@
                     </a>
                 </li>
                 {% endif %}
-                {% if request.session.course_id %}
+                {% if request.session.course_id && request.user.profil.role == 1 %}
                     <div class="logo" style="    margin-top: 80px;">
                         <a class="simple-text" style="font-size: 12px;">vous travaillez sur : {{ request.session.course_name }}</a>
                     </div>
