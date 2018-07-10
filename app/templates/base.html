@@ -57,66 +57,68 @@
         </div>
     </header> -->
     {% if user.is_authenticated %}
-    <div class="sidebar" data-color="purple" >
-        <div class="sidebar-wrapper">
-            <div class="logo">
-                <a href="/" class="simple-text">
-                    Octavia 
-                </a>
-            </div>
+    <div class="sidebar" data-color="purple" data-image="https://demos.creative-tim.com/light-bootstrap-dashboard/assets/img/sidebar-5.jpg">
+        <div class="sidebar" data-color="purple" >
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="/" class="simple-text">
+                        Octavia 
+                    </a>
+                </div>
 
-            <ul class="nav">
-                {% if request.user.profil.role == 1 %}
-                <li class="active">
-                    <a href="/course/">
-                        <i class="pe-7s-world"></i>
-                        <p>Classe</p>
-                    </a>
-                </li>
-                <li class="active">
-                    <a href="/course/create/">
-                        <i class="pe-7s-tools"></i>
-                        <p>Créer une classe</p>
-                    </a>
-                </li>
-                {% elif request.user.profil.role == 0 %}
-                <li>
-                    <a href="/home/">
-                        <i class="pe-7s-user"></i>
-                        <p>TEST</p>
-                    </a>
-                </li>
-                {% endif %}
-                {% if request.session.course_id and request.user.profil.role == 1 %}
-                    <div class="logo" style="    margin-top: 80px;">
-                        <a class="simple-text" style="font-size: 12px;">vous travaillez sur : {{ request.session.course_name }}</a>
-                    </div>
-                    <li>
-                        <a href="/student/create/{{ request.session.course_id }}">
-                            <i class="pe-7s-add-user"></i>
-                            <p>Ajouter un élève</p>
+                <ul class="nav">
+                    {% if request.user.profil.role == 1 %}
+                    <li class="active">
+                        <a href="/course/">
+                            <i class="pe-7s-world"></i>
+                            <p>Classe</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="/course/{{request.session.course_id}}/param/">
-                            <i class="pe-7s-menu"></i>
-                                <p>Gestion de la classe</p>
+                    <li class="active">
+                        <a href="/course/create/">
+                            <i class="pe-7s-tools"></i>
+                            <p>Créer une classe</p>
                         </a>
                     </li>
+                    {% elif request.user.profil.role == 0 %}
                     <li>
-                        <a href="/course/{{request.session.course_id}}/game">
-                            <i class="pe-7s-rocket"></i>
-                                <p>Librairie des jeux</p>
+                        <a href="/">
+                            <i class="pe-7s-user"></i>
+                            <p>Jouer</p>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if request.session.course_id and request.user.profil.role == 1 %}
+                        <div class="logo" style="    margin-top: 80px;">
+                            <a class="simple-text" style="font-size: 12px;">vous travaillez sur : {{ request.session.course_name }}</a>
+                        </div>
+                        <li>
+                            <a href="/student/create/{{ request.session.course_id }}">
+                                <i class="pe-7s-add-user"></i>
+                                <p>Ajouter un élève</p>
                             </a>
                         </li>
-                {% endif%}
-                <li class="nav-item active active-pro">
-                        <a class="nav-link active" href="/teacher/logout">
-                            <i class="pe-7s-power"></i>
-                            <p>Deconnexion</p>
-                        </a>
-                </li>
-            </ul>
+                        <li>
+                            <a href="/course/{{request.session.course_id}}/param/">
+                                <i class="pe-7s-menu"></i>
+                                    <p>Gestion de la classe</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/course/{{request.session.course_id}}/game">
+                                <i class="pe-7s-rocket"></i>
+                                    <p>Librairie des jeux</p>
+                                </a>
+                            </li>
+                    {% endif%}
+                    <li class="nav-item active active-pro">
+                            <a class="nav-link active" href="/teacher/logout">
+                                <i class="pe-7s-power"></i>
+                                <p>Deconnexion</p>
+                            </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     {% endif %}
