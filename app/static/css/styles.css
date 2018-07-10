@@ -3,6 +3,6 @@
 }
 .active-pro{
 	width: 100%;
-    position: absolute;
+    position: absolute!important;
     bottom: 30px;
 }
