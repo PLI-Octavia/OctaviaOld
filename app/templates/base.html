@@ -69,13 +69,13 @@
                 {% if request.user.profil.role == 1 %}
                 <li class="active">
                     <a href="/course/">
-                        <i class="pe-7s-graph"></i>
+                        <i class="pe-7s-world"></i>
                         <p>Classe</p>
                     </a>
                 </li>
                 <li class="active">
                     <a href="/course/create/">
-                        <i class="pe-7s-graph"></i>
+                        <i class="pe-7s-tools"></i>
                         <p>Créer une classe</p>
                     </a>
                 </li>
@@ -93,26 +93,26 @@
                     </div>
                     <li>
                         <a href="/student/create/{{ request.session.course_id }}">
-                            <i class="pe-7s-graph"></i>
+                            <i class="pe-7s-add-user"></i>
                             <p>Ajouter un élève</p>
                         </a>
                     </li>
                     <li>
                         <a href="/course/{{request.session.course_id}}/param/">
-                            <i class="pe-7s-graph"></i>
+                            <i class="pe-7s-menu"></i>
                                 <p>Gestion de la classe</p>
                         </a>
                     </li>
                     <li>
                         <a href="/course/{{request.session.course_id}}/game">
-                            <i class="pe-7s-graph"></i>
+                            <i class="pe-7s-diskette"></i>
                                 <p>Librairie des jeux</p>
                             </a>
                         </li>
                 {% endif%}
-                <li>
+                <li class="active">
                     <a href="/teacher/logout">
-                            <i class="pe-7s-graph"></i>
+                            <i class="pe-7s-door-lock"></i>
                                 <p>Deconnexion</p>
                             </a>
                         </li>
