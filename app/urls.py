@@ -52,7 +52,7 @@ config_urls = [
 ]
 
 urlpatterns = [
-    url(r'^/?$', student.login_form, name='home'),
+    url(r'^/?$', student.auth, name='home'),
     url(r'^teacher/', include(teacher_urls)),
     url(r'^student/', include(student_urls)),
     url(r'^course/', include(course_urls)),
