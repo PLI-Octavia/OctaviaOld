@@ -19,7 +19,7 @@ def see(request, game_id):
         config = '{}'
 
     # Game folder name in static/games must be the game name.
-    return render(request, TEMPLATES_PATH + 'show.html', {"game_name": game.name, "user":request.user, 'game_id':game.id, 'config':json.dumps(config)})
+    return render(request, TEMPLATES_PATH + 'show.html', {"game_name": game.name, "user":request.user, 'game_id':game.id, 'config':config})
 
 #list all of the game avaible
 @login_required
