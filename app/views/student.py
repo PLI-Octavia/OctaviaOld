@@ -11,7 +11,14 @@ TEMPLATES_PATH = 'student/'
 
 
 def login_form(request):
-    return render(request, TEMPLATES_PATH + 'login.html', {})
+    if request.user.is_authenticated():
+        if request.user.profil.role == 1:
+            return redirect('courses')
+        else:
+            userCourse = UserCourse.objects.get(user_id=request.user.id)
+            return redirect('/course/'+str(userCourse.course_id)+'/game?student=1')
+    else:
+        return render(request, TEMPLATES_PATH + 'login.html', {})
 
 
 def auth(request):
