@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section id="teacher-login-form">
+<style type="text/css">
+    .wrapper{
+     background: #3f3646cc;
+    }
+</style>
+<section id="teacher-login-form" class="loginform">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Connexion</h3>
-                    </div>
+                   <img class="img-login" src="https://pli-octavia.github.io/img/logo.png">
                     <div class="panel-body">
                         <form accept-charset="UTF-8" role="form" action='/teacher/auth' method="POST">
                             <fieldset>
