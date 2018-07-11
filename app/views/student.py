@@ -12,7 +12,7 @@ TEMPLATES_PATH = 'student/'
 
 def login_form(request):
     if request.user.is_authenticated():
-        if request.user.profil.role == 1:
+        if hasattr(request.user, 'profil') and request.user.profil.role == 1:
             return redirect('courses')
         else:
             userCourse = UserCourse.objects.get(user_id=request.user.id)
