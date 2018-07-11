@@ -17,6 +17,8 @@
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
     <!-- HighCharts -->
     <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- Eyes -->
+    <script type="text/javascript" src='{% static "/eyes.js" %}'></script>
     <!-- custom CSS -->
     <link rel="stylesheet" href='{% static "css/normalize.css" %}'>
     <link rel="stylesheet" href='{% static "css/light-bootstrap-dashboard.css" %}'>
@@ -135,12 +137,12 @@
     </div>
 
 </div>
-<script src="{% static "prelude.min.js" %}"></script>
-<script src="{% static "modules.js" %}"></script>
-<script src="{% static "form.js" %}"></script>
-<script src="{% static "login-form.js" %}"></script>
-<script src="{% static "game_scores.js" %}"></script>
-<script src="{% static "config_see.js" %}"></script>
+<script src='{% static "prelude.min.js" %}'></script>
+<script src='{% static "modules.js" %}'></script>
+<script src='{% static "form.js" %}'></script>
+<script src='{% static "login-form.js" %}'></script>
+<script src='{% static "game_scores.js" %}'></script>
+<script src='{% static "config_see.js" %}'></script>
 <script>
 octavia.require('{{ view_name }}');
 </script>
