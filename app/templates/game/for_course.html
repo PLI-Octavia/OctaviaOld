@@ -29,7 +29,7 @@
                 {% if student == 0 %}
                   {% if flag %}
                     Activé &bull;
-                    <a href="/course/{{course_id}}/game/{{game.id}}/disable" class="btn " role="button">Désactiver</a><br>
+                    <a href="/course/{{course_id}}/game/{{game.id}}/disable" class="btn " role="button">Désactiver</a><br><br>
                     <a style="" href="/game/{{game.id}}/" class="btn  role="button">Tester</a>
                     <a style=""href="/game/{{game.id}}/scores" class="btn " role="button">
                       Scores</a>
@@ -37,7 +37,7 @@
                       Configurer</a>
                   {% else %}
                     Désactivé &bull;
-                    <a href="/course/{{course_id}}/game/{{game.id}}/enable" class="btn " role="button">Activer</a><br>
+                    <a href="/course/{{course_id}}/game/{{game.id}}/enable" class="btn " role="button">Activer</a><br><br>
                     <a href="/game/{{game.id}}/" class="btn " role="button">Tester</a>
                 {% endif %}
                 {% else %}
