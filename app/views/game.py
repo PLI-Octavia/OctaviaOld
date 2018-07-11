@@ -11,7 +11,11 @@ TEMPLATES_PATH = 'game/'
 @login_required
 def see(request, game_id):
     game = Game.objects.get(pk=game_id)
-    uc = UserCourse.objects.filter(user=request.user).first() # use .filter.first instead of .get because of teachers might have more than one class
+    uc = None
+    if 'course_id' in request.session:
+        uc = UserCourse.objects.get(user=request.user, course_id=request.session['course_id']) # teacher has a class
+    else:
+        uc = UserCourse.objects.filter(user=request.user).first() # use .filter.first instead of .get because of teachers might have more than one class
     gc = GameConfig.objects.filter(course_id=uc.course.id, game_id=game.id).first()
     if gc:
         config = gc.config
