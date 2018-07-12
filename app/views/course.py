@@ -33,8 +33,10 @@ def store(request):
 
 @login_required
 def edit(request, course_id):
+    request.session['course_id'] = course_id
     users = UserCourse.objects.filter(course=course_id)
-    courseToSee = Course.objects.get(pk=course_id) 
+    courseToSee = Course.objects.get(pk=course_id)
+    request.session['course_name'] = courseToSee.name 
     return render(request, TEMPLATES_PATH + 'edit.html', {'users': users, 'course_id': course_id, 'course':courseToSee})
 
 @login_required

@@ -1,14 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section id="student-login-form">
+<style type="text/css">
+    .wrapper{
+        background-image: url(https://i.pinimg.com/originals/b1/a8/96/b1a896d9351341f4342113c0b85313e5.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .navbar navbar-default navbar-fixed{
+        display: none;
+    }
+</style>
+<section id="student-login-form " class="loginform"> 
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title text-center">Connecte toi</h3>
-                </div>
+                <section class="img-login">
+                    <div class="logo-body">
+                        <div class='logo-container'>
+                            <div class='eye'></div> <!-- @whitespace
+                         --><div class='eye'></div>
+                        </div>  
+                    </div>
+                </section>
                 <div class="panel-body">
                     <form accept-charset="UTF-8" role="form" action="{% url "student_auth" %}" method="POST">
                     <fieldset>
@@ -22,9 +38,10 @@
                             <input id="input-password" class="form-control" placeholder="Password" name="password" type="password" value="">
                             <div class="password-shapes"></div>
                         </div>
-                        <input class="btn btn-lg btn-success btn-block" type="submit" value="Connexion">
+                        <input class="btn btn-block" type="submit" value="Connexion">
                     </fieldset>
                     </form>
+                    <a class="link-teacher" href="/teacher/">Je suis un professeur</a>
                 </div>
             </div>
         </div>

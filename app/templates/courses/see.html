@@ -2,30 +2,38 @@
 
 {% block content %}
 
-<div class='row'>
-		<a href="/course/create/"><button class='btn btn-primary pull-right'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Créer une classe  </button></a>
-</div>
+
 {% if not courses %}
    <p>Pas de classe</p>
 {% else  %}
 
-	<div class="row">
 	{% for course in courses %}
-	  <div class="col-sm-3 col-md-3 col-lg-3">
-	    <div class="thumbnail">
-	      <img src="https://s-media-cache-ak0.pinimg.com/originals/3c/38/6d/3c386d203759319b508d9140440fb1c3.jpg" alt="...">
-	      <div class="caption">
-	        <h3>{{course.course.name}}</h3>
-          <p>
-          <a style="" href="/course/{{course.course.id}}/edit" class="btn btn-primary" role="button">Modifier</a>
-          <a style="float:right;" href="delete/{{course.id}}" class="btn btn-danger" role="button">Supprimer</a>
-          <a style="margin-top:5px;"href="/course/{{course.course.id}}/game" class="btn btn-success" role="button">Jeux</a></p>
-	      </div>
-	    </div>
-	  </div>
+	  	<div class="col-md-3">
+	        <div class="card card-user">
+	            <div class="image" style="height: auto;">
+	                <img src="https://s-media-cache-ak0.pinimg.com/originals/3c/38/6d/3c386d203759319b508d9140440fb1c3.jpg" alt="..."/>
+	            </div>
+	            <div class="content" style="min-height: auto;">
+	              
+	                <h4 class="title text-center">{{course.course.name}}<br />
+	                      </h4>
+	                      <hr>
+	                <p class="description text-center"> ici description ?<br>
+	                                    Je suis une description <br>
+	                                    de qualité"
+	                </p>
+	            </div>
+	            <hr>
+	            <div class="text-center" style="padding: 15px;">
+	                <a href="/course/{{course.course.id}}/edit" class="btn">Modifier</a>
+	                <a href="delete/{{course.id}}" class="btn">Supprimer</a>
+	                <a href="/course/{{course.course.id}}/game" class="btn">Jeux</a>
+
+	            </div>
+	        </div>
+		</div>
 	
 	{% endfor %}
-	</div>
 {% endif %}
 
 {% endblock %}

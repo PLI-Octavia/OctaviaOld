@@ -11,7 +11,11 @@ TEMPLATES_PATH = 'game/'
 @login_required
 def see(request, game_id):
     game = Game.objects.get(pk=game_id)
-    uc = UserCourse.objects.filter(user=request.user).first() # use .filter.first instead of .get because of teachers might have more than one class
+    uc = None
+    if 'course_id' in request.session:
+        uc = UserCourse.objects.get(user=request.user, course_id=request.session['course_id']) # teacher has a class
+    else:
+        uc = UserCourse.objects.filter(user=request.user).first() # use .filter.first instead of .get because of teachers might have more than one class
     gc = GameConfig.objects.filter(course_id=uc.course.id, game_id=game.id).first()
     if gc:
         config = gc.config
@@ -19,13 +23,15 @@ def see(request, game_id):
         config = '{}'
 
     # Game folder name in static/games must be the game name.
-    return render(request, TEMPLATES_PATH + 'show.html', {"game_name": game.name, "user":request.user, 'game_id':game.id, 'config':config})
+    return render(request, TEMPLATES_PATH + 'show.html', {"game_name": game.name, "user":request.user, 'game_id':game.id, 'config':json.dumps(config)})
 
 #list all of the game avaible
 @login_required
 def for_course(request, course_id):
+    request.session['course_id'] = course_id
     games = Game.objects.all()
     course = Course.objects.get(pk=course_id)
+    request.session['course_name'] = course.name 
     course_games = course.games.all()
     games_with_flag = [(game, game in course_games) for game in games]
     student = request.GET.get('student', 0)

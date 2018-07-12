@@ -48,3 +48,4 @@ octavia.register('login-form', function(){
 });
 octavia.alias('student_login', 'login-form');
 octavia.alias('student_create', 'login-form');
+octavia.alias('home', 'login-form');

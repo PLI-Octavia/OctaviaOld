@@ -5,25 +5,11 @@
 <div class="row">
     <br>
     <div class="row">
-        <div class="col-md-3">
-            <h2>{{course.name}}</h2>
-            <div id="sidebar" class="well sidebar-nav">
-                <h5><i class="glyphicon glyphicon-home"></i>
-                    <small><b>MANAGEMENT</b></small>
-                </h5>
-                <ul class="nav nav-pills nav-stacked">
-                    <li><a href="/student/create/{{course_id}}">Ajouter un élève</a></li>
-                    <li><a href="/course/{{course_id}}/param/"><span class="fa fa-home solo">Gestion de la classe</span></a></li>
-                    <li><a href="/course/{{course_id}}/game">
-                        <span class="fa fa-anchor solo">Librairie des jeux</span>
-                    </a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-9">
+        <div class="container">
+            <div class="col-md-12">
            <h2>Tableaux des élèves</h2> 
            <br><br>
-           <table id="student_table" class="display">
+           <table id="student_table" class="display table table-hover table-striped">
             <thead>
                 <tr>
                     <th>Login de l'enfant</th>
@@ -47,14 +33,15 @@
                     </td>               
                      <td>
                         <div class='pull-right'>
-                            <a href="/student/update/{{user.user.id}}/{{course_id}}"><button class="btn btn-primary">Modifier</button></a>
-                            <a href="/student/delete/{{user.user.id}}/{{course_id}}"><button class="btn btn-danger">Supprimer</button></a>
+                            <a href="/student/update/{{user.user.id}}/{{course_id}}"><button class="btn">Modifier</button></a>
+                            <a href="/student/delete/{{user.user.id}}/{{course_id}}"><button class="btn">Supprimer</button></a>
                         </div>
                      </td>
                 </tr>
                 {% endif %}
                 {% endfor %}
             </tbody>
+        </div>
         </table>
         </div>
 

@@ -17,17 +17,22 @@
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
     <!-- HighCharts -->
     <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript" src='{% static "/light-bootstrap-dashboard.js" %}'></script>
     <!-- custom CSS -->
     <link rel="stylesheet" href='{% static "css/normalize.css" %}'>
-    <link rel="stylesheet" href='{% static "css/styles.css" %}'>
-    <link rel="stylesheet" href='{% static "css/student_login.css" %}'>
+    <link rel="stylesheet" href='{% static "css/light-bootstrap-dashboard.css" %}'>
+    <link rel="stylesheet" href='{% static "css/animate.min.css" %}'>
+    <link rel="stylesheet" href='{% static "css/pe-icon-7-stroke.css" %}'>
+    <link rel="stylesheet" href='{% static "css/styles.css" %}'>   
+    <link rel="stylesheet" href='{% static "css/student_login.css" %}'>  
 
     
 </head>
 <body>
-<div class="page-header">
+
+<div class="wrapper">
     {% block header %}
-    <header>
+<!--     <header>
         <div class="container clearfix">
             <div class="navbar-wrapper">
                 <div class="container">
@@ -51,23 +56,109 @@
                 </div>
             </div>
         </div>
-    </header>
+    </header> -->
+    {% if user.is_authenticated %}
+        <div class="sidebar" data-color="purple" data-image="https://s-media-cache-ak0.pinimg.com/originals/3c/38/6d/3c386d203759319b508d9140440fb1c3.jpg">
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="/" class="simple-text">
+                        Octavia 
+                    </a>
+                </div>
+
+                <ul class="nav">
+                    {% if request.user.profil.role == 1 %}
+                    <li class="active">
+                        <a href="/course/">
+                            <i class="pe-7s-world"></i>
+                            <p>Classe</p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="/course/create/">
+                            <i class="pe-7s-tools"></i>
+                            <p>Créer une classe</p>
+                        </a>
+                    </li>
+                    {% elif request.user.profil.role == 0 %}
+                    <li>
+                        <a href="/">
+                            <i class="pe-7s-user"></i>
+                            <p>Jouer</p>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if request.session.course_id and request.user.profil.role == 1 %}
+                        <div class="logo" style="    margin-top: 80px;">
+                            <a class="simple-text" style="font-size: 12px;">vous travaillez sur : {{ request.session.course_name }}</a>
+                        </div>
+                        <li>
+                            <a href="/student/create/{{ request.session.course_id }}">
+                                <i class="pe-7s-add-user"></i>
+                                <p>Ajouter un élève</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/course/{{request.session.course_id}}/param/">
+                                <i class="pe-7s-menu"></i>
+                                    <p>Gestion de la classe</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/course/{{request.session.course_id}}/game">
+                                <i class="pe-7s-rocket"></i>
+                                    <p>Librairie des jeux</p>
+                                </a>
+                            </li>
+                    {% endif%}
+                    <li class="nav-item active active-pro">
+                            <a class="nav-link active" href="/teacher/logout">
+                                <i class="pe-7s-power"></i>
+                                <p>Deconnexion</p>
+                            </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar-background" style="background-image: url(https://s-media-cache-ak0.pinimg.com/originals/3c/38/6d/3c386d203759319b508d9140440fb1c3.jpg) "></div>
+        </div>
+          <div class="main-panel">
+         <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                 
+                </div>
+            </div>
+        </nav>
+    {% endif %}
     {% endblock %}
-</div>
-<div class="content container">
-    <div class="row">
-        <div class="col-md-12">
-            {% block content %}
-            {% endblock %}
+
+  
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
         </div>
     </div>
+
 </div>
-<script src="{% static "prelude.min.js" %}"></script>
-<script src="{% static "modules.js" %}"></script>
-<script src="{% static "form.js" %}"></script>
-<script src="{% static "login-form.js" %}"></script>
-<script src="{% static "game_scores.js" %}"></script>
-<script src="{% static "config_see.js" %}"></script>
+<script src='{% static "prelude.min.js" %}'></script>
+<script src='{% static "modules.js" %}'></script>
+<script src='{% static "form.js" %}'></script>
+<script src='{% static "login-form.js" %}'></script>
+<script src='{% static "game_scores.js" %}'></script>
+<script src='{% static "config_see.js" %}'></script>
+<script src='{% static "eyes.js" %}'></script>
 <script>
 octavia.require('{{ view_name }}');
 </script>

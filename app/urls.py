@@ -18,7 +18,7 @@ teacher_urls = [
     url(r'^$', teacher.see, name='teacher_login'),
     url(r'^auth/?$', teacher.auth, name='teacher_auth'),
     url(r'^home/?$', teacher.home, name='teacher_home'),
-    url(r'^logout/?$', teacher.home, name='teacher_logout')
+    url(r'^logout/?$', teacher.logout, name='teacher_logout')
 ]
 
 course_urls = [
@@ -52,7 +52,7 @@ config_urls = [
 ]
 
 urlpatterns = [
-    url(r'^/?$', home.see, name='home'),
+    url(r'^/?$',student.login_form, name='home'),
     url(r'^teacher/', include(teacher_urls)),
     url(r'^student/', include(student_urls)),
     url(r'^course/', include(course_urls)),
